@@ -1,0 +1,40 @@
+.rosu{
+    background-color: red;
+}
+
+.questions{
+    .question-unit{
+        margin-bottom: 10px;
+        .question{
+            padding: 1rem 1.4rem 1rem 0.5rem;
+            background-color: var(--accent2);
+            color: white;
+            font-weight: 500;
+            position: relative;
+        }
+        .question:before{
+            content:"+";
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            font-size:1.7rem;
+            transform: translateY(-50%);
+        }
+        .answer{
+            height: 0;
+            overflow: hidden;
+            overflow-y: auto;
+            transition: 0.5s;
+        }
+    }
+    .active{
+        .question:before{
+            content:"-";
+        }
+        .answer{
+            height: fit-content;
+            padding: 1rem 0.5rem;
+            overflow: auto;
+        }
+    }
+}

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './gdpr.component.html',
-  styleUrl: './gdpr.component.scss'
+  styleUrl: '../conditions/conditions.component.scss'
 })
 export class GdprComponent {
 

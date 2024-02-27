@@ -1,1 +1,31 @@
-<p>navbar works!</p>
+<div style="margin-top: 5rem;"></div>
+<div class="header-container">
+    <div class="container">
+        <div class="left-side-header">
+            <i class="fa-solid fa-bars mobile-menu" (click)="openMenu(navigation, closeMenuBtn)"></i>
+            <i class="fa-solid fa-xmark close-menu" #closeMenuBtn (click)="closeMenu(navigation, closeMenuBtn)" (window:keydown.esc)="closeMenu(navigation, closeMenuBtn)"></i>
+            <a routerLink="/"><img class="logo" src="../../../assets/logo-final.svg"></a>
+        </div>    
+        <div class="right-side-header">
+            <div class="upper-nav">
+                <p><a href="tel://+40 (766) 540 549"><i class="fa-solid fa-phone"></i> <span class="contact-no"> +40 766 540 549</span></a></p>
+                <div class="language"  (mouseover)="addLang(language)" (mouseleave)="removeLang(language)">
+                    <img src="../../../assets/romania-flag.png" alt="romanian flag"> <span>RO</span> <i class="fa-solid fa-caret-down"></i>
+                    <div class="other-language" #language>
+                        <div><a routerLink="/home"><img src="../../../assets/romania-flag.png" alt="romanian flag"><span>RO</span></a></div> 
+                        <div><a href="home.html"><img src="../../../assets/united-kingdom-flag.png" alt="UK flag"><span>EN</span></a></div>
+                    </div>    
+                </div>
+            </div> 
+            
+            <nav class="navbar" #navigation>
+                <ul>
+                    <li><a routerLink="/home" routerLinkActive="current">Flota</a></li>
+                    <li><a routerLink="/tarife" routerLinkActive="current">Tarife</a></li>
+                    <li><a routerLink="/rezervari/:id" routerLinkActive="current">Rezervari</a></li>
+                    <li><a routerLink="/termeni-si-conditii" routerLinkActive="current">Conditii</a></li>
+                </ul>
+            </nav> 
+        </div>
+    </div>
+</div>
