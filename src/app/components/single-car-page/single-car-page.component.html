@@ -1,1 +1,53 @@
-<p>single-car-page works!</p>
+<div class="container car-page">
+    <h1 class="title">{{car.name}}</h1>
+    <div class="particular-car">
+        <div class="car-photo">
+            <div class="promo" *ngIf="promo">de la <br><span>{{prices[2].dayEightTwentyOne | currency: 'EUR': 'symbol' :'2.0-0'}}</span> <br>/zi</div>
+            <img [src]="car.img" [alt]="car.name">
+        </div>            
+        <div class="car-specs">
+            <div class="specs">
+                <h3>Specificatii</h3>
+                <ul>
+                    <li>Tip combustibil: <span>{{car.specs[0].fuel}}</span></li>
+                    <li>Cutie de viteze: <span>{{car.specs[1].gear}}</span></li>
+                    <li>Volum portbagaj 
+                        <span class="trunk"><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 4}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 3}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 2}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 1}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 0}"></i> </span>
+                    </li>
+                    <li>Categorie: <span>{{car.specs[3].carType}}</span></li>
+                </ul>
+            </div>
+            <div class="car-equipment">
+                <h3 >Dotari</h3>
+                <ul>
+                    <li *ngFor="let equip of car.equipment">{{equip}}</li>
+                </ul>
+            </div>                     
+        </div>
+        <div class="price-days-div">
+            <h3>Tarife in functie de numarul de zile</h3>
+            <div class="price-days">
+                <div>
+                    <span class="price-days-title">Nr zile</span>
+                    <span>1-3</span>
+                    <span>4-7</span>
+                    <span>8-21</span>
+                </div>
+                <div>
+                    <span class="price-days-title">Pret / zi</span>
+                    <span>{{prices[0].dayOneThree | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
+                    <span>{{prices[1].dayFourSeven | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
+                    <span>{{prices[2].dayEightTwentyOne | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
+                    
+                </div>  
+            </div>
+            <p class="negotiable">Pentru o perioada mai mare de 21 de zile, pretul de inchiriere este <strong>negociabil.</strong></p>
+        </div>
+        <div class="price-total">
+            <p>Tarifele sunt exprimate in EURO/zi de inchiriere si includ: TVA, R.C.A, ROVINIETA, ASIGURARE CASCO, ANVELOPE DE IARNA, kilometraj nelimitat, mentenanta conform specificatiilor producatorului, asistenta rutiere 24/7.</p>
+            <p>Tarifele nu includ: combustibil, amenzi de parcare sau de circulatie, scaun auto pentru copii.</p>
+        </div>
+    </div>
+    
+    <button class="reserve-btn" type="button" routerLink="/rezervari/{{id}}">Rezerva</button>
+</div>

@@ -39,10 +39,16 @@
             border-radius:5px;
             margin:0 auto 3rem auto;
             position:relative;
-            img{
+            .photo{
+                width:290px;
+                height:230px;
                 margin-top:1.5rem;
-                width:280px;
-            }
+                margin-left:-5px;
+                overflow: hidden;
+                img{
+                    width:100%;
+                }
+            } 
             .car-title{
                 font-family: 'Merriweather Sans', sans-serif;
                 font-size:1.5rem;
@@ -66,9 +72,7 @@
                 display: flex;
                 justify-content: space-between;
                 margin: 2rem 0.5rem;
-                a{
-                    color:black;
-                }
+                button{cursor: pointer;}
             }
         }
     }
@@ -91,8 +95,8 @@
                 margin-bottom:2rem;
                 padding-left: 1rem;
                 width:330px;
-                img{
-                    width:320px;
+                .photo{
+                    width:330px;
                     margin-left:-1rem;
                 }
                 .car-buttons {

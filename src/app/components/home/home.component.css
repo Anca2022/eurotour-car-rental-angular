@@ -1,0 +1,115 @@
+@charset "UTF-8";
+.hero {
+  background-image: url("../../../assets/pexels-lukas-žvikas-1075947.jpg");
+  transform: scaleX(-1);
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+  color: white;
+  padding: 5rem 0 4rem 0;
+}
+.hero h1, .hero p {
+  transform: scaleX(-1);
+}
+.hero h1 {
+  text-transform: uppercase;
+  padding-bottom: 3rem;
+  line-height: 2.5rem;
+}
+.hero p {
+  padding-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.fleet .title {
+  padding: 6rem 0 3rem 0;
+  line-height: 28px;
+}
+.fleet .cars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+}
+.fleet .cars .car {
+  padding: 10px 0 0 5px;
+  width: 290px;
+  box-shadow: 2px 2px 7px lightgray;
+  border-radius: 5px;
+  margin: 0 auto 3rem auto;
+  position: relative;
+}
+.fleet .cars .car .photo {
+  width: 290px;
+  height: 230px;
+  margin-top: 1.5rem;
+  margin-left: -5px;
+  overflow: hidden;
+}
+.fleet .cars .car .photo img {
+  width: 100%;
+}
+.fleet .cars .car .car-title {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--dark);
+  margin: 20px 0 40px 0;
+  text-align: center;
+}
+.fleet .cars .car .car-details li {
+  padding: 0 0 5px 10px;
+}
+.fleet .cars .car .car-details li h3 {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 500;
+  width: 150px;
+}
+.fleet .cars .car .car-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0.5rem;
+}
+.fleet .cars .car .car-buttons button {
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    margin-right: 0;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+    margin-left: 500px;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-left: 400px;
+  }
+  .fleet .cars .car {
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    width: 330px;
+  }
+  .fleet .cars .car .photo {
+    width: 330px;
+    margin-left: -1rem;
+  }
+  .fleet .cars .car .car-buttons {
+    margin-right: 1.5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .hero h1 {
+    margin-left: 700px;
+  }
+  .hero p {
+    margin-left: 500px;
+  }
+  .fleet > .cars > .car > .car-buttons {
+    margin-right: 1.7rem;
+  }
+}/*# sourceMappingURL=home.component.css.map */

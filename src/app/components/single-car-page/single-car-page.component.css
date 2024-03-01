@@ -1,0 +1,280 @@
+.car-page {
+  padding: 4rem 0;
+}
+.car-page .particular-car {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.car-page .particular-car .car-photo {
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0px 0px 7px lightgray;
+  height: 230px;
+  width: 280px;
+  overflow: hidden;
+}
+.car-page .particular-car .car-photo .promo {
+  padding: 1px 5px;
+  top: 5px;
+  left: 5px;
+  width: 63px;
+  height: 63px;
+  font-size: 0.7rem;
+  line-height: 20px;
+}
+.car-page .particular-car .car-photo .promo span {
+  font-size: 1.2rem;
+}
+.car-page .particular-car .car-photo img {
+  padding-top: 20px;
+  width: 100%;
+}
+.car-page .particular-car h3 {
+  padding-top: 2.5rem;
+  padding-bottom: 1rem;
+  text-align: center;
+  color: var(--dark);
+}
+.car-page .particular-car .car-specs {
+  font-size: 0.95rem;
+  width: 280px;
+}
+.car-page .particular-car .car-specs li {
+  line-height: 28px;
+}
+.car-page .particular-car .car-specs li span {
+  margin-left: 10px;
+  font-weight: 500;
+  float: right;
+}
+.car-page .particular-car .car-specs li .trunk i {
+  margin-left: 5px;
+  color: lightgrey;
+}
+.car-page .particular-car .car-specs li .trunk .black {
+  color: black;
+}
+.car-page .particular-car .car-specs .car-equipment li {
+  text-align: center;
+}
+.car-page .particular-car .price-days {
+  margin: 0.7rem auto 1rem auto;
+  width: 90%;
+  padding: 1rem 0.5rem 0 0.7rem;
+  box-shadow: 0px 0px 6px lightgray;
+  border-radius: 5px;
+}
+.car-page .particular-car .price-days div:first-child {
+  border-bottom: 1.5px solid lightgray;
+  margin-bottom: 1rem;
+}
+.car-page .particular-car .price-days span {
+  display: inline-block;
+  padding-bottom: 1rem;
+  width: 22%;
+  text-align: center;
+}
+.car-page .particular-car .price-days .price-days-title {
+  font-weight: bold;
+  width: 34%;
+  text-align: left;
+}
+.car-page .particular-car .negotiable {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.car-page .particular-car .price-total {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: rgba(232, 232, 232, 0.5);
+  color: var(--dark);
+  border-radius: 5rem 0;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+.car-page .particular-car .price-total p {
+  font-size: 1.05rem;
+  padding-bottom: 1rem;
+}
+.car-page .particular-car .price-total p:last-child {
+  padding-bottom: 0;
+}
+.car-page .reserve-btn {
+  display: block;
+  width: unset;
+  margin: 4rem auto 2rem auto;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+@media (min-width: 760px) {
+  .car-page {
+    padding-top: 4rem;
+  }
+  .car-page .title {
+    margin-left: 5rem;
+  }
+  .car-page .particular-car {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .car-page .particular-car .car-photo {
+    height: 300px;
+    width: 350px;
+  }
+  .car-page .particular-car .car-photo .promo {
+    top: 23px;
+    left: 9px;
+  }
+  .car-page .particular-car .car-photo img {
+    margin-top: 1rem;
+  }
+  .car-page .particular-car h3 {
+    margin-bottom: 1.5rem;
+  }
+  .car-page .particular-car .price-days-div {
+    order: 2;
+    flex-basis: 40%;
+  }
+  .car-page .particular-car .car-specs {
+    width: unset;
+    order: 3;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 3rem;
+    width: 100%;
+  }
+  .car-page .particular-car .car-specs li {
+    line-height: 1.4rem;
+  }
+  .car-page .particular-car .car-specs .specs {
+    width: 300px;
+  }
+  .car-page .particular-car .car-specs .car-equipment {
+    width: 400px;
+  }
+  .car-page .particular-car .car-specs .car-equipment ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .car-page .particular-car .car-specs .car-equipment ul li {
+    width: 45%;
+  }
+  .car-page .particular-car .price-total {
+    order: 4;
+    border-radius: 2rem 5rem;
+    margin: 1.7rem auto;
+  }
+  .car-page .particular-car .price-total p {
+    font-size: 1rem;
+  }
+  .car-page .reserve-btn {
+    margin-top: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .car-page .title {
+    margin-left: 0;
+  }
+  .car-page .particular-car h3 {
+    font-size: 1.6rem;
+    padding-bottom: 1.3rem;
+  }
+  .car-page .particular-car .car-photo {
+    height: 500px;
+    flex-basis: 45%;
+    padding-bottom: 2.5rem;
+  }
+  .car-page .particular-car .car-photo .promo {
+    width: 75px;
+    height: 75px;
+    font-size: 1rem;
+  }
+  .car-page .particular-car .car-photo .promo span {
+    font-size: 1.5rem;
+  }
+  .car-page .particular-car .car-photo img {
+    display: block;
+    width: 95%;
+    margin: 50px auto 0 auto;
+  }
+  .car-page .particular-car .car-specs {
+    order: 2;
+    flex-basis: 50%;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 1.2rem;
+  }
+  .car-page .particular-car .car-specs li {
+    padding: 3px 0;
+  }
+  .car-page .particular-car .car-specs .specs {
+    width: 430px;
+  }
+  .car-page .particular-car .car-specs .specs h3 {
+    padding-top: 0;
+  }
+  .car-page .particular-car .car-specs .car-equipment {
+    width: 430px;
+  }
+  .car-page .particular-car .car-specs .car-equipment div:first-child li {
+    text-align: left;
+  }
+  .car-page .particular-car .car-specs .car-equipment div:nth-child(2) li {
+    text-align: right;
+  }
+  .car-page .particular-car .price-days-div {
+    padding-top: 8rem;
+    order: 3;
+    flex-basis: 40%;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  .car-page .particular-car .price-days-div h3 {
+    padding-top: 0;
+  }
+  .car-page .particular-car .price-days-div .negotiable {
+    font-size: 1.2rem;
+  }
+  .car-page .particular-car .price-total {
+    margin-right: 0;
+    margin-top: 5rem;
+    flex-basis: 50%;
+    max-width: 800px;
+  }
+  .car-page .particular-car .price-total p {
+    font-size: 1.2rem;
+  }
+  .car-page .reserve-btn {
+    margin: 3rem auto 3rem auto;
+    padding: 1rem 1.8rem;
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1440px) {
+  .car-page .particular-car h3 {
+    font-size: 1.8rem;
+  }
+  .car-page .particular-car .car-photo .promo {
+    top: 27px;
+    width: 80px;
+    height: 80px;
+    font-size: 1.1rem;
+  }
+  .car-page .particular-car .car-photo .promo span {
+    font-size: 1.7rem;
+  }
+  .car-page .particular-car .car-specs {
+    font-size: 1.3rem;
+  }
+  .car-page .particular-car .car-specs .specs, .car-page .particular-car .car-specs .car-equipment {
+    width: 480px;
+  }
+}/*# sourceMappingURL=single-car-page.component.css.map */

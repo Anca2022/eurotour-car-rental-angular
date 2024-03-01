@@ -1,0 +1,37 @@
+.rosu {
+  background-color: red;
+}
+
+.questions .question-unit {
+  margin-bottom: 10px;
+}
+.questions .question-unit .question {
+  padding: 1rem 1.4rem 1rem 0.5rem;
+  background-color: var(--accent2);
+  color: white;
+  font-weight: 500;
+  position: relative;
+}
+.questions .question-unit .question:before {
+  content: "+";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  font-size: 1.7rem;
+  transform: translateY(-50%);
+}
+.questions .question-unit .answer {
+  height: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  transition: 0.5s;
+}
+.questions .active .question:before {
+  content: "-";
+}
+.questions .active .answer {
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 1rem 0.5rem;
+  overflow: auto;
+}/*# sourceMappingURL=faq.component.css.map */

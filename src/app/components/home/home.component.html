@@ -14,7 +14,7 @@
                 <span>18€</span> 
                 <br/>/zi
                 </div> -->
-            <img [src]="car.img" [alt]="car.name">
+            <div class="photo"><img [src]="car.img" [alt]="car.name"></div>
             <p class="car-title">{{car.name}}</p>
             <ul class="car-details">
                 <li class="engines">
@@ -27,7 +27,7 @@
                 </li>
             </ul>
             <div class="car-buttons">
-                <button type="button" routerLink="/masina/:id">Detalii</button>
+                <button type="button" routerLink="/masina/{{car.id}}">Detalii</button>
                 <button type="button" routerLink="/rezervari/:id">Rezerva</button>
             </div>
         </div>

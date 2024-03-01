@@ -10,8 +10,7 @@ export const fakeQuestions:FAQ[] =[
 export const cars:Car [] = [
     {id: 'opel-corsa-1-4-i', name: 'Opel Corsa 1.4i', img: '../../../assets/opel-corsa-1-4-i-265.jpg',  specs:[{fuel:'benzina'}, {gear:'manuala'}, {trunk:1}, {carType: 'hatchback'}], equipment:['aer conditionat', 'bluetooth', 'scaune izofix'] },
     {id: 'chevrolet-spark-0-8-i' , name: 'Chevrolet Spark 0.8i', img: '../../../assets/chevrolet-spark-0-8-i.jpg', specs:[{fuel:'benzina'}, {gear:'automata'}, {trunk:3}, {carType: 'SUV'}], equipment:['aer conditionat', 'bluetooth', 'touchscreen']  },
-    {id: 'vw-passat-2-0-tdi' , name: 'VW Passat 2.0 TDI', img: '../../../assets/vw-passat-2017-648.jpg', specs:[{fuel:'motorina'}, {gear:'manuala'}, {trunk:2}, {carType: 'sedan'}], equipment:['aer conditionat', 'bluetooth', 'volan piele', 'USB-C']  }
-];
+    {id: 'vw-passat-2-0-tdi' , name: 'VW Passat 2.0 TDI', img: '../../../assets/vw-passat-2017-648.jpg', specs:[{fuel:'motorina'}, {gear:'manuala'}, {trunk:5}, {carType: 'sedan'}], equipment:['aer conditionat', 'bluetooth', 'volan piele', 'USB-C']  }    ];
 
 export const carTypes: CarTypes[] = [
     {type: 'hatchback', price: [{dayOneThree:28}, {dayFourSeven: 22}, {dayEightTwentyOne: 18}], warranty: 200, assurance: 40, promo:true},
@@ -22,13 +21,19 @@ export const carTypes: CarTypes[] = [
 // const promoCars:CarTypes[] = carTypes.filter((c)=>c.promo);
 // const promoCat:[string,number][] = promoCars.map((p)=> [p.type, p.price[2].dayEightTwentyOne] ); 
 
-const promoCars:[string,number][] = carTypes.filter((c)=>c.promo).map((p)=>[p.type, p.price[2].dayEightTwentyOne]); 
+const promoCars:string[] = carTypes.filter((c)=>c.promo).map((p)=>p.type); 
 
-export function hasPromo(car:any){
-    console.log(promoCars)
-    console.log(cars)
-    console.log(carTypes)
+export function hasPromo(carType:any){
     for(let i=0; i<=promoCars.length; i++)
-    {if (car === promoCars[i][0]) return true;}
+    {if (carType === promoCars[i]) return true;}
     return false; 
   }
+
+export function getCarById(id:string):Car{
+    return cars.find(car=> car.id === id)!; 
+}
+
+export function getPrices(type:string):any{
+    let category = carTypes.find(car => car.type === type);
+    return category?.price; 
+}
