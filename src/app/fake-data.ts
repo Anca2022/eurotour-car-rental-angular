@@ -23,7 +23,7 @@ export const carTypes: CarTypes[] = [
 
 const promoCars:string[] = carTypes.filter((c)=>c.promo).map((p)=>p.type); 
 
-export function hasPromo(carType:any){
+export function hasPromo(carType:any):boolean{
     for(let i=0; i<=promoCars.length; i++)
     {if (carType === promoCars[i]) return true;}
     return false; 
@@ -37,3 +37,4 @@ export function getPrices(type:string):any{
     let category = carTypes.find(car => car.type === type);
     return category?.price; 
 }
+
