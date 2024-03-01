@@ -51,7 +51,20 @@ button{
 .centered {
     margin: 0 auto;
 }
-
+.promo{
+    background-color: orangered;
+    position:absolute;
+    height: 75px;
+    width: 75px;
+    padding:0.3rem 0.5rem;
+    border-radius:50%;
+    text-align:center;
+    line-height: 1.4rem;
+    span{
+        font-size:1.6rem;
+        font-weight:bold;
+    }
+}
 @media (min-width:760px) {
     .title{
         text-align:left;

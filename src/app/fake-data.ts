@@ -8,9 +8,9 @@ export const fakeQuestions:FAQ[] =[
 ];
 
 export const cars:Car [] = [
-    {id: 'opel-corsa-1-4-i', name: 'Opel Corsa 1.4i', img: 'img/opel-corsa-1-4-i-265.jpg',  specs:[{fuel:'benzina'}, {gear:'manuala'}, {trunk:1}, {carType: 'hatchback'}], equipment:['aer conditionat', 'bluetooth', 'scaune izofix'] },
-    {id: 'chevrolet-spark-0-8-i' , name: 'Chevrolet Spark 0.8i', img: 'img/chevrolet-spark-0-8-i.jpg', specs:[{fuel:'benzina'}, {gear:'automata'}, {trunk:3}, {carType: 'SUV'}], equipment:['aer conditionat', 'bluetooth', 'touchscreen']  },
-    {id: 'vw-passat-2-0-tdi' , name: 'VW Passat 2.0 TDI', img: 'img/vw-passat-2017-648.jpg', specs:[{fuel:'motorina'}, {gear:'manuala'}, {trunk:2}, {carType: 'sedan'}], equipment:['aer conditionat', 'bluetooth', 'volan piele', 'USB-C']  }
+    {id: 'opel-corsa-1-4-i', name: 'Opel Corsa 1.4i', img: '../../../assets/opel-corsa-1-4-i-265.jpg',  specs:[{fuel:'benzina'}, {gear:'manuala'}, {trunk:1}, {carType: 'hatchback'}], equipment:['aer conditionat', 'bluetooth', 'scaune izofix'] },
+    {id: 'chevrolet-spark-0-8-i' , name: 'Chevrolet Spark 0.8i', img: '../../../assets/chevrolet-spark-0-8-i.jpg', specs:[{fuel:'benzina'}, {gear:'automata'}, {trunk:3}, {carType: 'SUV'}], equipment:['aer conditionat', 'bluetooth', 'touchscreen']  },
+    {id: 'vw-passat-2-0-tdi' , name: 'VW Passat 2.0 TDI', img: '../../../assets/vw-passat-2017-648.jpg', specs:[{fuel:'motorina'}, {gear:'manuala'}, {trunk:2}, {carType: 'sedan'}], equipment:['aer conditionat', 'bluetooth', 'volan piele', 'USB-C']  }
 ];
 
 export const carTypes: CarTypes[] = [
@@ -18,3 +18,17 @@ export const carTypes: CarTypes[] = [
     {type: 'SUV', price: [{dayOneThree: 55}, {dayFourSeven: 50}, {dayEightTwentyOne: 48}],  warranty: 300, assurance: 60, promo:false},
     {type: 'sedan', price: [{dayOneThree: 36}, {dayFourSeven: 32}, {dayEightTwentyOne: 28}], warranty: 250, assurance: 50, promo:false}
 ]
+
+// const promoCars:CarTypes[] = carTypes.filter((c)=>c.promo);
+// const promoCat:[string,number][] = promoCars.map((p)=> [p.type, p.price[2].dayEightTwentyOne] ); 
+
+const promoCars:[string,number][] = carTypes.filter((c)=>c.promo).map((p)=>[p.type, p.price[2].dayEightTwentyOne]); 
+
+export function hasPromo(car:any){
+    console.log(promoCars)
+    console.log(cars)
+    console.log(carTypes)
+    for(let i=0; i<=promoCars.length; i++)
+    {if (car === promoCars[i][0]) return true;}
+    return false; 
+  }
