@@ -18,7 +18,8 @@ export class NavbarComponent {
         };
     closeMenu(t1:any, t2:any){
         t1.classList.remove('display-menu');
-        t2.classList.remove('display-exit-btn');}
+        t2.classList.remove('display-exit-btn');
+      }
 
     //language menu
   addLang(t:any){

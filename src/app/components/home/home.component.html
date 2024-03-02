@@ -6,7 +6,7 @@
 </section>
 
 <section class="fleet container">
-    <h2 class="title">Flota noastra va sta la dispozitie</h2>
+    <h2 class="title">Flota noastră vă stă la dispoziție</h2>
     <div class="cars">
         <div class="car" *ngFor="let car of cars">
                 <div class="promo" *ngIf="promo(car.specs[3].carType)">de la 
@@ -27,7 +27,7 @@
             </ul>
             <div class="car-buttons">
                 <button type="button" routerLink="/masina/{{car.id}}">Detalii</button>
-                <button type="button" routerLink="/rezervari/:id">Rezerva</button>
+                <button type="button" routerLink="/rezervari/{{car.id}}">Rezervă</button>
             </div>
         </div>
     </div>

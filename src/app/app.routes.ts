@@ -7,6 +7,7 @@ import { ConditionsComponent } from './components/conditions/conditions.componen
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { SingleCarPageComponent } from './components/single-car-page/single-car-page.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SuccesComponent } from './components/succes/succes.component';
 
 export const routes: Routes = [
     {path:'', pathMatch:'full', redirectTo:'home'},
@@ -17,6 +18,6 @@ export const routes: Routes = [
     {path:'termeni-si-conditii', component:ConditionsComponent}, 
     {path:'politica-confidentialitate', component:GdprComponent}, 
     {path:'tarife', component:PricesComponent},
+    {path:'succes', component:SuccesComponent},
     {path:'**', component:NotFoundComponent}
-
 ];

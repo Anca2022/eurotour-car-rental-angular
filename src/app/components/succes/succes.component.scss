@@ -1,0 +1,26 @@
+.succes {
+    padding-top: 4rem;
+    height:100vh;
+    p{ 
+        font-size:1.3rem;
+        text-align: center; 
+    }
+}
+
+@media (min-width:760px) {
+    .succes {
+        padding-top: 4rem;
+        p{ 
+            text-align:left; 
+        }
+    }
+}
+
+@media (min-width:1024px){
+    .succes {
+        p{ 
+            font-size:1.4rem; 
+        }
+    }
+}
+

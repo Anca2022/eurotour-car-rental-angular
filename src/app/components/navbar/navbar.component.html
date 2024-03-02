@@ -20,10 +20,10 @@
             
             <nav class="navbar" #navigation>
                 <ul>
-                    <li><a routerLink="/home" routerLinkActive="current">Flota</a></li>
-                    <li><a routerLink="/tarife" routerLinkActive="current">Tarife</a></li>
-                    <li><a routerLink="/rezervari/:id" routerLinkActive="current">Rezervari</a></li>
-                    <li><a routerLink="/termeni-si-conditii" routerLinkActive="current">Conditii</a></li>
+                    <li><a routerLink="/home" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Flota</a></li>
+                    <li><a routerLink="/rezervari/:id" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Rezervări</a></li>
+                    <li><a routerLink="/tarife" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Tarife</a></li>
+                    <li><a routerLink="/termeni-si-conditii" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Condiții</a></li>
                 </ul>
             </nav> 
         </div>

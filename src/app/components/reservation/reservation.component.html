@@ -1,1 +1,72 @@
-<p>reservation works!</p>
+<section class="container reservation-page">
+    <h1 class="title">Rezervare mașină</h1>
+    <p class="reservation-info">Pentru rezervări, vă rugăm să sunați la numărul de telefon <a href="tel://+40 (766) 540 549">0755 934 953</a>, sau să completați formularul de mai jos. </p>
+    
+    <form action="https://formsubmit.co/f25e4f074875849b81f48aaa5c959a16" method="POST">
+        <!--honeypot + disable captcha-->
+        <input type="text" name="_honey" style="display:none;">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://resilient-choux-32abd2.netlify.app/succes.html">
+        <div class="reservation centered">
+            <div class="car-select">
+                <h2>Selectează mașina</h2>
+                <select name="selected&nbsp;car" id="selected-car" required onchange="carSelect();">
+                    <option *ngFor="let eachCar of allCars" [value]="eachCar.name">{{eachCar.name}}</option>
+                </select>
+                <p class="reservation-price"><span id="no-days">10</span> zile x <span id="price-per-day">26</span>€/zi<span class="price-all-days">260€</span></p>
+
+                <div class="reservation-img">
+                    <img [src]="car.img" [alt]="car.name">
+                </div>
+            </div>
+    
+            <div class="date-select">
+                <h2>Alege Datele</h2>
+                <div class="pick-up-date centered">
+                    <p>Dată preluare</p>
+                    <input type="date" name="pick&nbsp;up&nbsp;date" id="pick-up" required >
+                    <div class="time"><input type="time" step="1800"></div>
+                </div>
+                <div class="dropoff-date centered">
+                    <p>Dată predare</p>
+                    <input type="date" name="dropoff&nbsp;date" id="dropoff" required>
+                    <div class="time"><input type="time" step="1800"></div>
+                </div>
+            </div>
+    
+            <div class="personal-info">
+                <h2>Date personale</h2>
+                <label for="name">Nume <span>*</span></label>
+                <input type="text" name="name" id="name" placeholder="Nume si prenume" required oninvalid="this.setCustomValidity('Va rugam sa completati numele si prenumele dumneavoastra')" oninput="setCustomValidity('')"> <br>
+                <label for="email">Email <span>*</span></label>
+                <input type="email" name="email" placeholder="Adresa email"  id="email" required oninvalid="this.setCustomValidity('Va rugam sa completati adresa de email')" oninput="setCustomValidity('')"> <br>
+                <label for="tel">Nr telefon <span>*</span></label>
+                <input type="tel" name="tel" placeholder="Numar de telefon"  id="tel" required oninvalid="this.setCustomValidity('Va rugam sa completati numarul de telefon')" oninput="setCustomValidity('')"> <br>
+                <label for="message">Mesaj</label>
+                <textarea name="message" placeholder="Informatii suplimentare" id="message" cols="30" rows="7"></textarea>
+                
+            </div>
+        </div>
+        
+        <div class="summary centered">
+            <h2>Sumar Rezervare</h2>
+            <div>Preț închiriere <span id="trip-price">26€</span></div>
+            <div>Garanție <span id="warranty">200€</span></div>
+            <div class="show-scdw"><input type="checkbox" name="assurance" id="assurance-check" onchange="updateTotal();">  <label for="assurance" title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">asigurare facultativă <i class="fa-solid fa-circle-info"></i><span id="assurance">40€</span> </label></div>
+            <div class="total-price"> PREȚ TOTAL <span id="final-price">41€</span></div>
+        </div>
+
+        <div class="accord centered">
+            <input type="checkbox" required name="accord" id="" oninvalid="this.setCustomValidity('Pentru a face rezervarea trebuie sa acceptati Termenii si Conditiile')" oninput="setCustomValidity('')"> 
+            <label for="accord">Sunt de acord cu Termenii și Condițiile </label>
+        </div>
+        <input type="submit" value="Trimite Rezervarea" class="submit-btn" >
+    </form>
+    <div class="reservation-other">
+    <p>* Preluarea și predarea autoturismelor se face la Aeroportul International Cluj-Napoca, de luni până duminică, în intervalul orar 09-18. </p>
+    <p>* Plata cu CARD-ul se poate face dacă aveti un CARD Visa sau Mastercard care să fie pe numele dvs.</p>
+    </div>
+    
+</section>
+   
+

@@ -1,1 +1,323 @@
-/*# sourceMappingURL=reservation.component.css.map */
+.reservation-page {
+  padding: 3rem 0.5rem 2rem 0.5rem;
+}
+.reservation-page input, .reservation-page select, .reservation-page textarea {
+  border-radius: 5px;
+  border: 1px solid rgb(209, 209, 209);
+}
+.reservation-page select, .reservation-page input[type=date] {
+  padding: 0.3rem;
+}
+.reservation-page .reservation-info {
+  font-size: 1.2rem;
+  padding-bottom: 2.5rem;
+}
+.reservation-page .reservation-info a {
+  color: black;
+  font-weight: 600;
+}
+.reservation-page .reservation {
+  max-width: 500px;
+  display: grid;
+  gap: 4%;
+  margin-bottom: 5rem;
+}
+.reservation-page .reservation .car-select, .reservation-page .reservation .date-select, .reservation-page .reservation .personal-info {
+  background-color: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  padding: 0.5rem 0.5rem 1.5rem 0.5rem;
+}
+.reservation-page .reservation .car-select h2, .reservation-page .reservation .date-select h2, .reservation-page .reservation .personal-info h2 {
+  color: black;
+  background-color: rgb(240, 240, 240);
+  border-radius: 5px 5px 0 0;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  margin: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+.reservation-page .reservation .car-select select {
+  font-size: 1rem;
+}
+.reservation-page .reservation .car-select p.reservation-price {
+  float: right;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 1.1rem;
+  padding: 1.2rem 0.6rem 0.3rem 0.6rem;
+  margin-bottom: 1rem;
+  background-color: var(--dark);
+  color: white;
+  border-radius: 50%;
+}
+.reservation-page .reservation .car-select p.reservation-price .price-all-days {
+  display: block;
+  border-top: 1px solid white;
+  margin-top: 0.2rem;
+  padding-top: 0.2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.reservation-page .reservation .car-select .reservation-img img {
+  width: 100%;
+  display: block;
+}
+.reservation-page .reservation .date-select {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.reservation-page .reservation .date-select h2 {
+  grid-column: 1/3;
+}
+.reservation-page .reservation .date-select input {
+  font-size: 0.9rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.reservation-page .reservation .date-select div {
+  margin-bottom: 1rem;
+}
+.reservation-page .reservation .date-select div p {
+  padding: 0.5rem 0;
+}
+.reservation-page .reservation .date-select .time {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.reservation-page .reservation .personal-info {
+  margin-bottom: 3rem;
+}
+.reservation-page .reservation .personal-info input {
+  float: right;
+  padding: 2px 5px;
+  margin-top: 5px;
+}
+.reservation-page .reservation .personal-info label {
+  line-height: 30px;
+  position: relative;
+}
+.reservation-page .reservation .personal-info label span {
+  font-size: 0.7rem;
+  position: absolute;
+  top: -8px;
+}
+.reservation-page .reservation .personal-info textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+}
+.reservation-page .summary {
+  max-width: 500px;
+  background-color: var(--dark);
+  color: white;
+  padding: 4rem 1rem 1rem 1rem;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+.reservation-page .summary h2 {
+  text-align: center;
+  padding-bottom: 3rem;
+}
+.reservation-page .summary div {
+  padding-bottom: 0.8rem;
+  font-size: 1.05rem;
+}
+.reservation-page .summary div span {
+  width: 45px;
+  font-weight: 600;
+  float: right;
+}
+.reservation-page .summary div.show-scdw {
+  position: relative;
+  padding-bottom: 2rem;
+}
+.reservation-page .summary div.show-scdw .bonus {
+  display: none;
+}
+.reservation-page .summary div.show-scdw .display-bonus {
+  display: block;
+  position: absolute;
+  left: 1.5rem;
+  top: 1.5rem;
+  background-color: white;
+  color: black;
+  font-weight: normal;
+  width: 250px;
+  padding: 0.5rem;
+  border-radius: 3px;
+  box-shadow: 1px 0px 10px rgb(94, 94, 94);
+}
+.reservation-page .summary .total-price {
+  border-top: 2px solid rgba(238, 252, 250, 0.3);
+  padding: 2.5rem 0 2.5rem 0.3rem;
+  font-weight: bold;
+}
+.reservation-page .summary .total-price span {
+  font-size: 1.2rem;
+  margin-right: 0.2rem;
+}
+.reservation-page .accord {
+  max-width: 500px;
+  padding-top: 2rem;
+  padding-left: 1rem;
+}
+.reservation-page .submit-btn {
+  cursor: pointer;
+  display: block;
+  margin: 3rem auto;
+  padding: 1rem 1.6rem;
+  background-color: var(--accent1-dark);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 1px 4px #c2b49e;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: black;
+}
+.reservation-page .submit-btn:hover {
+  background-color: var(--accent1);
+  box-shadow: 3px 2px 5px #c2b49e;
+}
+.reservation-page .reservation-other p {
+  font-size: 0.8rem;
+  padding-bottom: 0.7rem;
+}
+
+@media (min-width: 760px) {
+  .reservation-page .reservation {
+    max-width: unset;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 3rem;
+  }
+  .reservation-page .reservation .car-select {
+    grid-column: 1/2;
+    grid-row: 1/3;
+    height: 550px;
+  }
+  .reservation-page .reservation .car-select p.reservation-price {
+    padding: 0.6rem;
+    font-weight: 500;
+    width: 130px;
+    height: unset;
+    border-radius: 5px;
+  }
+  .reservation-page .reservation .car-select p.reservation-price .price-all-days {
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .reservation-page .reservation .car-select .reservation-img img {
+    padding-top: 3rem;
+  }
+  .reservation-page .reservation .date-select {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+  .reservation-page .reservation .personal-info {
+    padding-bottom: 0.5rem;
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+  .reservation-page .reservation .personal-info input {
+    width: 220px;
+  }
+  .reservation-page .summary div.show-scdw .display-bonus {
+    left: 150px;
+    top: 1.5rem;
+    width: 270px;
+  }
+}
+@media (min-width: 1024px) {
+  .reservation-page input[type=date] {
+    font-size: 1rem;
+  }
+  .reservation-page .reservation .car-select {
+    height: 580px;
+  }
+  .reservation-page .reservation .car-select h2 {
+    margin-bottom: 0;
+  }
+  .reservation-page .reservation .car-select select {
+    margin: 1rem 0 0 0.5rem;
+    font-size: 1rem;
+  }
+  .reservation-page .reservation .car-select p.reservation-price {
+    margin: 1rem 0.5rem 0 0;
+    padding: 1.4rem 0.5rem;
+    width: 45%;
+    height: 70px;
+  }
+  .reservation-page .reservation .car-select p.reservation-price .price-all-days {
+    min-width: 60px;
+    float: right;
+    border-left: 2px solid white;
+    border-top: none;
+    padding: 0 0 0 0.5rem;
+    margin: 0 0 0 0.5rem;
+  }
+  .reservation-page .reservation .date-select p {
+    font-size: 1.2rem;
+  }
+  .reservation-page .reservation .personal-info {
+    padding: 1rem;
+  }
+  .reservation-page .reservation .personal-info h2 {
+    margin: -1rem;
+    margin-bottom: 1rem;
+  }
+  .reservation-page .reservation .personal-info input {
+    font-size: 0.9rem;
+  }
+  .reservation-page .reservation .personal-info label {
+    font-size: 1.1rem;
+    line-height: 35px;
+  }
+  .reservation-page .summary {
+    max-width: unset;
+    width: 700px;
+    padding: 1.5rem 6rem;
+  }
+  .reservation-page .accord {
+    max-width: 700px;
+    padding-left: 6rem;
+  }
+  .reservation-page .submit-btn {
+    font-size: 1.5rem;
+    margin: 5rem auto;
+  }
+  .reservation-page .reservation-other p {
+    font-size: 0.9rem;
+    padding-bottom: 0.7rem;
+  }
+}
+@media (min-width: 1440px) {
+  .reservation-page .reservation .car-select p.reservation-price .price-all-days {
+    min-width: 80px;
+  }
+  .reservation-page .reservation .car-select .reservation-img img {
+    padding-top: 2rem;
+  }
+  .reservation-page .reservation .personal-info input {
+    width: 300px;
+  }
+  .reservation-page .summary {
+    width: 800px;
+    padding: 2.5rem 7rem 1.5rem 7rem;
+    font-size: 1.2rem;
+  }
+  .reservation-page .summary div.show-scdw .display-bonus {
+    font-size: 1rem;
+  }
+  .reservation-page .accord {
+    font-size: 1.1rem;
+    max-width: 800px;
+    padding-left: 7rem;
+  }
+  .reservation-page .reservation-other p {
+    font-size: 1rem;
+  }
+}/*# sourceMappingURL=reservation.component.css.map */
