@@ -9,8 +9,8 @@
     <h2 class="title">Flota noastră vă stă la dispoziție</h2>
     <div class="cars">
         <div class="car" *ngFor="let car of cars">
-                <div class="promo" *ngIf="promo(car.specs[3].carType)">de la 
-                <span>{{promoPrice(car.specs[3].carType) | currency: 'EUR' : 'symbol' : '2.0-0'}}</span> 
+                <div class="promo" *ngIf="car.promo">de la 
+                <span>{{car.price[2].dayEightTwentyOne | currency: 'EUR' : 'symbol' : '2.0-0'}}</span> 
                 <br/>/zi
                 </div>
             <div class="photo"><img [src]="car.img" [alt]="car.name"></div>

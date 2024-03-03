@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Car, CarTypes } from '../../types';
-import { carTypes, cars, hasPromo, getPrices } from '../../fake-data';
+import { CarAllInfo } from '../../types';
+import { carsAllInfo } from '../../fake-data';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,19 +12,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit{
-  cars:Car[]=[]; 
-  carTypes:CarTypes[]=[];  
+  cars:CarAllInfo[]=[]; 
+  
   constructor(){}
   ngOnInit(): void {
-    this.cars=cars; 
-    this.carTypes = carTypes;
-    
+    this.cars=carsAllInfo; 
   }
-  promo(car:any){
-    return hasPromo(car); 
-  } 
-  promoPrice(carType:string):number{
-    return getPrices(carType)[2].dayEightTwentyOne;
-    }
 
 }

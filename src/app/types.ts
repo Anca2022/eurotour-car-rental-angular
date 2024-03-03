@@ -7,18 +7,36 @@ export interface Car{
     id:string, 
     name:string, 
     img: string, 
-    specs:[{fuel:string}, {gear:'automata' | 'manuala'}, {trunk:number}, {carType: string} ],
+    specs:[{fuel:string}, {gear:string}, {trunk:number} ],
     equipment: string[],
+    carType: string
 }
 
 export interface CarTypes{
-    type:string,
+    carType:string,
     price: [
         {dayOneThree: number}, 
         {dayFourSeven: number}, 
-        {dayEightTwentyOne: number},    
+        {dayEightTwentyOne: number}    
     ], 
     warranty: number,
     assurance: number, 
     promo:boolean;
+}
+
+export interface CarAllInfo{
+    id:string, 
+    name:string, 
+    img: string, 
+    specs:[{fuel:string}, {gear:string}, {trunk:number}],
+    equipment: string[],
+    carType:string,
+    price: [
+        {dayOneThree: number}, 
+        {dayFourSeven: number}, 
+        {dayEightTwentyOne: number}   
+    ], 
+    warranty: number,
+    assurance: number, 
+    promo:boolean
 }

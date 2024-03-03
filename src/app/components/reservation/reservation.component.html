@@ -1,4 +1,4 @@
-<section class="container reservation-page">
+<div class="container reservation-page">
     <h1 class="title">Rezervare mașină</h1>
     <p class="reservation-info">Pentru rezervări, vă rugăm să sunați la numărul de telefon <a href="tel://+40 (766) 540 549">0755 934 953</a>, sau să completați formularul de mai jos. </p>
     
@@ -10,13 +10,13 @@
         <div class="reservation centered">
             <div class="car-select">
                 <h2>Selectează mașina</h2>
-                <select name="selected&nbsp;car" id="selected-car" required onchange="carSelect();">
-                    <option *ngFor="let eachCar of allCars" [value]="eachCar.name">{{eachCar.name}}</option>
+                <select name="selected&nbsp;car" id="selected-car" required [value]="currentCar.id" #selectedCar (change)="carSelect(selectedCar.value)" >
+                    <option *ngFor="let eachCar of allCars" [value]="eachCar.id">{{eachCar.name}}</option>
                 </select>
                 <p class="reservation-price"><span id="no-days">10</span> zile x <span id="price-per-day">26</span>€/zi<span class="price-all-days">260€</span></p>
 
                 <div class="reservation-img">
-                    <img [src]="car.img" [alt]="car.name">
+                    <img [src]="currentCar.img" [alt]="currentCar.name">
                 </div>
             </div>
     
@@ -66,7 +66,6 @@
     <p>* Preluarea și predarea autoturismelor se face la Aeroportul International Cluj-Napoca, de luni până duminică, în intervalul orar 09-18. </p>
     <p>* Plata cu CARD-ul se poate face dacă aveti un CARD Visa sau Mastercard care să fie pe numele dvs.</p>
     </div>
-    
-</section>
+</div>
    
 

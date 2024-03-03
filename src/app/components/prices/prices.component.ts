@@ -14,10 +14,9 @@ import { CommonModule } from '@angular/common';
 })
 export class PricesComponent implements OnInit{
   carTypes:CarTypes[]=[]; 
-  
+
   constructor(){}
   ngOnInit(): void {
     this.carTypes = carTypes; 
   }
-
 }

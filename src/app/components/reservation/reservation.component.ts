@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Car, CarTypes } from '../../types';
-import { carTypes, cars, getCarById } from '../../fake-data';
+import { CarAllInfo } from '../../types';
+import { carsAllInfo, getCarById } from '../../fake-data';
 import { CommonModule } from '@angular/common';
 
 
@@ -14,16 +14,18 @@ import { CommonModule } from '@angular/common';
 })
 export class ReservationComponent implements OnInit{
   id!:string;
-  allCars:Car[]=[]; 
-  carCategories:CarTypes[]=[]
-  car!:Car;  
+  allCars:CarAllInfo[]=[]; 
+  currentCar!:CarAllInfo;  
   
-  constructor(private route:ActivatedRoute, private router:Router){}
+  constructor(private route:ActivatedRoute, private router:Router){
+  }
   ngOnInit(): void {
     this.route.params.subscribe(param => this.id = param['id']); 
-    this.allCars = cars; 
-    this.carCategories = carTypes; 
-    this.car = getCarById(this.id); 
-    
+    this.allCars = carsAllInfo; 
+    this.currentCar = getCarById(this.id);
+  }
+
+  carSelect(id:string){
+    this.currentCar = getCarById(id);
   }
 }

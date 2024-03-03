@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-not-found',
@@ -11,3 +12,4 @@ import { RouterModule } from '@angular/router';
 export class NotFoundComponent {
 
 }
+

@@ -21,7 +21,7 @@
             <nav class="navbar" #navigation>
                 <ul>
                     <li><a routerLink="/home" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Flota</a></li>
-                    <li><a routerLink="/rezervari/:id" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Rezervări</a></li>
+                    <li><a routerLink="/rezervari/{{carId}}" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Rezervări</a></li>
                     <li><a routerLink="/tarife" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Tarife</a></li>
                     <li><a routerLink="/termeni-si-conditii" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Condiții</a></li>
                 </ul>

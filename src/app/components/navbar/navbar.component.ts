@@ -1,5 +1,6 @@
-import { Component, HostListener} from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { carsAllInfo } from '../../fake-data';
 
 @Component({
   selector: 'app-navbar',
@@ -8,8 +9,13 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent {
- 
+export class NavbarComponent implements OnInit{
+  carId!:string; 
+
+  constructor(){}
+  ngOnInit(): void {
+    this.carId = carsAllInfo[0].id; 
+  }
     //mobile menu
 
     openMenu(t1:any, t2:any){

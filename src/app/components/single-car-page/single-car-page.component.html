@@ -2,7 +2,7 @@
     <h1 class="title">{{car.name}}</h1>
     <div class="particular-car">
         <div class="car-photo">
-            <div class="promo" *ngIf="promo">de la <br><span>{{prices[2].dayEightTwentyOne | currency: 'EUR': 'symbol' :'2.0-0'}}</span> <br>/zi</div>
+            <div class="promo" *ngIf="car.promo">de la <br><span>{{car.price[2].dayEightTwentyOne | currency: 'EUR': 'symbol' :'2.0-0'}}</span> <br>/zi</div>
             <img [src]="car.img" [alt]="car.name">
         </div>            
         <div class="car-specs">
@@ -14,7 +14,7 @@
                     <li>Volum portbagaj 
                         <span class="trunk"><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 4}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 3}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 2}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 1}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 0}"></i> </span>
                     </li>
-                    <li>Categorie: <span>{{car.specs[3].carType}}</span></li>
+                    <li>Categorie: <span>{{car.carType}}</span></li>
                 </ul>
             </div>
             <div class="car-equipment">
@@ -35,9 +35,9 @@
                 </div>
                 <div>
                     <span class="price-days-title">Pret / zi</span>
-                    <span>{{prices[0].dayOneThree | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
-                    <span>{{prices[1].dayFourSeven | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
-                    <span>{{prices[2].dayEightTwentyOne | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
+                    <span>{{car.price[0].dayOneThree | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
+                    <span>{{car.price[1].dayFourSeven | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
+                    <span>{{car.price[2].dayEightTwentyOne | currency: 'EUR': 'symbol' :'2.0-0'}}</span>
                     
                 </div>  
             </div>

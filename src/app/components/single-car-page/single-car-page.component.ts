@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Car } from '../../types';
-import { getCarById, getPrices, hasPromo } from '../../fake-data';
+import { CarAllInfo } from '../../types';
+import { getCarById } from '../../fake-data';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,14 +13,10 @@ import { CommonModule } from '@angular/common';
 })
 export class SingleCarPageComponent implements OnInit {
 id!:string; 
-car!:Car;  
-prices!:any; 
-promo:boolean = false; 
+car!:CarAllInfo; 
 constructor(private route:ActivatedRoute){}
 ngOnInit(): void {
   this.route.params.subscribe((param)=> this.id = param['id']);
   this.car = getCarById(this.id); 
-  this.prices = getPrices(this.car.specs[3].carType);
-  this.promo = hasPromo(this.car.specs[3].carType); 
 }
 }

@@ -18,7 +18,7 @@
         </div>
                 
         <div class="row" *ngFor="let carType of carTypes; let i=index">
-                <span class="car-name">{{carType.type}}</span>
+                <span class="car-name">{{carType.carType}}</span>
                 <span>{{carType.price[0].dayOneThree | currency:'EUR' : 'symbol' : '2.0-0'}}</span>
                 <span>{{carType.price[1].dayFourSeven| currency:'EUR': 'symbol' : '2.0-0'}}</span>
                 <span>{{carType.price[2].dayEightTwentyOne| currency:'EUR': 'symbol' : '2.0-0'}}</span>
