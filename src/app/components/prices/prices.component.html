@@ -16,15 +16,21 @@
             <span title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">SCDW/zi <i class="fa-solid fa-circle-info"></i></span>
             <span></span>
         </div>
-                
         <div class="row" *ngFor="let carType of carTypes; let i=index">
-                <span class="car-name">{{carType.carType}}</span>
+                <span class="car-name" (click)="toggle(i)">
+                    <span>{{carType.carType}} <i class="fa-solid fa-caret-down"></i></span>
+                    <span class="cars-in-category" 
+                        [class.display-cars-in-category]="display[i]" 
+                        *ngFor="let car of cars[i]">
+                      {{car}}
+                    </span>
+                </span>
                 <span>{{carType.price[0].dayOneThree | currency:'EUR' : 'symbol' : '2.0-0'}}</span>
                 <span>{{carType.price[1].dayFourSeven| currency:'EUR': 'symbol' : '2.0-0'}}</span>
                 <span>{{carType.price[2].dayEightTwentyOne| currency:'EUR': 'symbol' : '2.0-0'}}</span>
                 <span>{{carType.warranty | currency:'EUR': 'symbol' : '2.0-0'}}</span>
                 <span>{{carType.assurance | currency:'EUR': 'symbol' : '2.0-0'}}</span>
-                <span><button class="reserve-btn" type="button" routerLink="/rezervari/:id">Rezervă</button></span>
+                <span><button class="reserve-btn" type="button" routerLink="/rezervari/{{ids[i]}}">Rezervă</button></span>
         </div>     
     </div>
     <div class="price-text"> 

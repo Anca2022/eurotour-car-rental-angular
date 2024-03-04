@@ -40,3 +40,8 @@ export interface CarAllInfo{
     assurance: number, 
     promo:boolean
 }
+
+export interface CarsByCategory {
+    id:string,
+    carNames: string[]
+}

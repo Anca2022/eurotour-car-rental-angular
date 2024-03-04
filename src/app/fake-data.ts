@@ -1,4 +1,4 @@
-import { Car, CarTypes, CarAllInfo, FAQ } from "./types";
+import { Car, CarTypes, CarAllInfo, FAQ, CarsByCategory } from "./types";
 
 export const fakeQuestions:FAQ[] =[
     {question:'De ce ploua noaptea?', answer:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, nam.'},
@@ -15,13 +15,31 @@ const cars:Car [] = [
 export const carTypes: CarTypes[] = [
     {carType: 'hatchback', price: [{dayOneThree:28}, {dayFourSeven: 22}, {dayEightTwentyOne: 18}], warranty: 200, assurance: 40, promo:true},
     {carType: 'SUV', price: [{dayOneThree: 55}, {dayFourSeven: 50}, {dayEightTwentyOne: 48}],  warranty: 300, assurance: 60, promo:false},
-    {carType: 'sedan', price: [{dayOneThree: 36}, {dayFourSeven: 32}, {dayEightTwentyOne: 28}], warranty: 250, assurance: 50, promo:true}
+    {carType: 'sedan', price: [{dayOneThree: 36}, {dayFourSeven: 32}, {dayEightTwentyOne: 28}], warranty: 250, assurance: 50, promo:false}
 ]
 
 export const carsAllInfo:CarAllInfo[]=[];   
 joinData(cars, carTypes);
  
+export function getCarById(id:string):CarAllInfo{
+    return carsAllInfo.find(car=> car.id === id)!; 
+}
 
+export function getCarsByCategory(cat:string):CarsByCategory{
+    let carCat:CarAllInfo[] = carsAllInfo.filter(car => car.carType === cat); 
+    let id:string = carCat[0].id; 
+    let cars:string[] = carCat.map(car => car.name); 
+    let carsByCategory: CarsByCategory = {
+        id: id,
+        carNames: cars
+    }
+    return carsByCategory;
+}
+
+// export function getPrices(type:string):any{
+//     let category = carTypes.find(car => car.carType === type);
+//     return category?.price; 
+// }
 // const promoCars:string[] = carTypes.filter((c)=>c.promo).map((p)=>p.carType); 
 
 // export function hasPromo(carType:any):boolean{
@@ -29,16 +47,6 @@ joinData(cars, carTypes);
 //     {if (carType === promoCars[i]) return true;}
 //     return false; 
 //   }
-
-export function getCarById(id:string):CarAllInfo{
-    return carsAllInfo.find(car=> car.id === id)!; 
-}
-
-// export function getPrices(type:string):any{
-//     let category = carTypes.find(car => car.carType === type);
-//     return category?.price; 
-// }
-
 
 function joinData(cars:Car[], carTypes:CarTypes[]):void {
     cars.forEach(eachCar=> {
