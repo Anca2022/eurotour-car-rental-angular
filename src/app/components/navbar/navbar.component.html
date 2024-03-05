@@ -1,5 +1,5 @@
 <div style="margin-top: 5rem;"></div>
-<div class="header-container">
+<div class="header-container" appScroll>
     <div class="container">
         <div class="left-side-header">
             <i class="fa-solid fa-bars mobile-menu" (click)="openMenu(navigation, closeMenuBtn)"></i>
@@ -18,7 +18,7 @@
                 </div>
             </div> 
             
-            <nav class="navbar" #navigation>
+            <nav class="navbar" #navigation >
                 <ul>
                     <li><a routerLink="/home" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Flota</a></li>
                     <li><a routerLink="/rezervari/{{carId}}" routerLinkActive="current" (click)="closeMenu(navigation, closeMenuBtn)">Rezervări</a></li>

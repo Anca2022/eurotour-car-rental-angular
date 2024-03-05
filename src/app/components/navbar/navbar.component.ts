@@ -1,11 +1,12 @@
-import { Component, HostListener, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { carsAllInfo } from '../../fake-data';
+import { ScrollDirective } from '../../directives/scroll.directive';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, ScrollDirective],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
