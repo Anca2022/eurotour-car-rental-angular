@@ -6,55 +6,39 @@
         <p>Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.</p>
     </div>
 
-    <div class="price-table">
-        <div class="header-row">
-            <span></span>
-            <span>1-3 zile</span>
-            <span>4-7 zile</span>
-            <span>8-21 zile</span>
-            <span>Garanție</span>
-            <span title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">SCDW/zi <i class="fa-solid fa-circle-info"></i></span>
-            <span></span>
-        </div>
-        <div class="row" *ngFor="let carType of carTypes; let i=index">
-                <span class="car-name" (click)="toggle(i)">
-                    <span>{{carType.carType | titlecase}} <i class="fa-solid fa-caret-down"></i></span>
-                    <span class="cars-in-category" 
-                        [class.display-cars-in-category]="display[i]" 
-                        *ngFor="let car of cars[i]">
-                      {{car}}
+    <div *ngIf="carTypes.length < 1; then noData else priceTable"></div>
+    <ng-template #noData>A aparut o eroare de incarcare. Va rugam sa incercati mai tarziu.</ng-template>
+    <ng-template #priceTable>
+        <div class="price-table">
+            <div class="header-row">
+                <span></span>
+                <span>1-3 zile</span>
+                <span>4-7 zile</span>
+                <span>8-21 zile</span>
+                <span>Garanție</span>
+                <span title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">SCDW/zi <i class="fa-solid fa-circle-info"></i></span>
+                <span></span>
+            </div>
+            <div class="row" *ngFor="let carType of carTypes; let i=index">
+                    <span class="car-name" (click)="toggle(i)">
+                        <span>{{carType.carType | titlecase}} <i class="fa-solid fa-caret-down"></i></span>
+                        <span class="cars-in-category" 
+                            [class.display-cars-in-category]="display[i]" 
+                            *ngFor="let car of cars[i]">
+                          {{car}}
+                        </span>
                     </span>
-                </span>
-                <span>{{carType.price[0].dayOneThree | currency:'EUR' : 'symbol' : '2.0-0'}}</span>
-                <span>{{carType.price[1].dayFourSeven| currency:'EUR': 'symbol' : '2.0-0'}}</span>
-                <span>{{carType.price[2].dayEightTwentyOne| currency:'EUR': 'symbol' : '2.0-0'}}</span>
-                <span>{{carType.warranty | currency:'EUR': 'symbol' : '2.0-0'}}</span>
-                <span>{{carType.assurance | currency:'EUR': 'symbol' : '2.0-0'}}</span>
-                <span><button class="reserve-btn" type="button" routerLink="/rezervari/{{ids[i]}}">Rezervă</button></span>
-        </div>     
-    </div>
+                    <span>{{carType.price[0].dayOneThree | currency:'EUR' : 'symbol' : '2.0-0'}}</span>
+                    <span>{{carType.price[1].dayFourSeven| currency:'EUR': 'symbol' : '2.0-0'}}</span>
+                    <span>{{carType.price[2].dayEightTwentyOne| currency:'EUR': 'symbol' : '2.0-0'}}</span>
+                    <span>{{carType.warranty | currency:'EUR': 'symbol' : '2.0-0'}}</span>
+                    <span>{{carType.assurance | currency:'EUR': 'symbol' : '2.0-0'}}</span>
+                    <span><button class="reserve-btn" type="button" routerLink="/rezervari/{{ids[i]}}">Rezervă</button></span>
+            </div>     
+        </div>
+    </ng-template> 
+    
     <div class="price-text"> 
         <p class="negotiable">Dacă doriți să închiriați mașina pentru o perioada mai mare de 21 de zile, prețul de închiriere este <strong>negociabil.</strong> </p>
     </div>
-
 </div>     
-
-        
-        
-
-    <!-- <script>
-        let bonusInfo = document.getElementsByClassName('fa-circle-info')[0];
-        let bonus = document.getElementsByClassName('bonus')[0];
-
-        bonusInfo.addEventListener('mouseover', ()=> {
-        bonus.classList.add('display-bonus');
-        });
-
-        bonusInfo.addEventListener('mouseout', ()=> {
-            bonus.classList.remove('display-bonus');
-        });
-
-        bonusInfo.addEventListener('click', ()=> {
-            bonus.classList.toggle('display-bonus');
-        });
-    </script> -->

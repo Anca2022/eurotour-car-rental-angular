@@ -4,7 +4,6 @@ import { CarAllInfo } from '../../types';
 import { carsAllInfo } from '../../fake-data';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-// import { FirstletterUppercasePipe } from '../../pipes/firstletter-uppercase.pipe';
 
 @Component({
   selector: 'app-home',

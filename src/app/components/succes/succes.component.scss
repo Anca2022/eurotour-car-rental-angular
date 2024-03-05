@@ -1,6 +1,6 @@
 .succes {
-    padding-top: 4rem;
-    height:100vh;
+    padding: 4rem 0.5rem 0 0.5rem;
+    height:75vh;
     p{ 
         font-size:1.3rem;
         text-align: center; 
@@ -9,7 +9,8 @@
 
 @media (min-width:760px) {
     .succes {
-        padding-top: 4rem;
+       padding-left: 1rem;
+       padding-right:1rem;
         p{ 
             text-align:left; 
         }
@@ -19,7 +20,7 @@
 @media (min-width:1024px){
     .succes {
         p{ 
-            font-size:1.4rem; 
+            font-size:1.35rem; 
         }
     }
 }

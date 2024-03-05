@@ -8,6 +8,7 @@
 <section class="fleet container">
     <h2 class="title">Flota noastră vă stă la dispoziție</h2>
     <div class="cars">
+        <div *ngIf="cars.length<1">A aparut o eroare de incarcare. Va rugam sa incercati mai tarziu.</div>
         <div class="car" *ngFor="let car of cars">
                 <div class="promo" *ngIf="car.promo">de la 
                 <span>{{car.price[2].dayEightTwentyOne | currency: 'EUR' : 'symbol' : '2.0-0'}}</span> 

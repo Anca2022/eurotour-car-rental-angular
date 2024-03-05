@@ -17,18 +17,18 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     this.carId = carsAllInfo[0].id; 
   }
-    //mobile menu
+  //mobile menu
 
-    openMenu(t1:any, t2:any){
-            t1.classList.add('display-menu');
-            t2.classList.add('display-exit-btn');
-        };
-    closeMenu(t1:any, t2:any){
-        t1.classList.remove('display-menu');
-        t2.classList.remove('display-exit-btn');
-      }
+  openMenu(t1:any, t2:any){
+          t1.classList.add('display-menu');
+          t2.classList.add('display-exit-btn');
+      };
+  closeMenu(t1:any, t2:any){
+      t1.classList.remove('display-menu');
+      t2.classList.remove('display-exit-btn');
+    }
 
-    //language menu
+  //language menu
   addLang(t:any){
     t.classList.add('display-languages');
   }
