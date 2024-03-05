@@ -13,8 +13,13 @@
     margin:0; 
     padding:0;
 }
+html{
+    height: 100%;
+}
 body{
+    min-height:100%;
     font-family: 'Roboto', sans-serif;
+    position:relative;
 }
 ul{
     list-style-type: none;

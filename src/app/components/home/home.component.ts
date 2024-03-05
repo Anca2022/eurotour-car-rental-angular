@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { carsAllInfo } from '../../fake-data';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 // import { FirstletterUppercasePipe } from '../../pipes/firstletter-uppercase.pipe';
 
 @Component({
@@ -15,8 +16,9 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent implements OnInit{
   cars:CarAllInfo[]=[]; 
   
-  constructor(){}
+  constructor(private titleService:Title){}
   ngOnInit(): void {
+    this.titleService.setTitle('Eurotour - Inchirieri masini Cluj-Napoca')
     this.cars=carsAllInfo; 
   }
 

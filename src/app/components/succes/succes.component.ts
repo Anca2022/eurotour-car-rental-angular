@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-succes',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
   templateUrl: './succes.component.html',
   styleUrl: './succes.component.scss'
 })
-export class SuccesComponent {
+export class SuccesComponent implements OnInit{
+  constructor(private titleService:Title){}
+  ngOnInit(): void {
+    this.titleService.setTitle('Eurotour - Inchirieri masini Cluj-Napoca')
+  }
 
 }

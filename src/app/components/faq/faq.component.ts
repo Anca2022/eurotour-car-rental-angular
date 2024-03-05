@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { FAQ } from '../../types';
 import { fakeQuestions } from '../../fake-data';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-faq',
@@ -13,9 +14,10 @@ import { CommonModule } from '@angular/common';
 })
 export class FaqComponent implements OnInit{
   questions:FAQ[]=[];
-  constructor(){}
+  constructor(private titleService:Title){}
   ngOnInit(): void {
     this.questions = fakeQuestions; 
+    this.titleService.setTitle('Intrebari Frecvente | Eurotour - Inchirieri masini Cluj-Napoca')
   }
   
   toggleAnswer(t:any){

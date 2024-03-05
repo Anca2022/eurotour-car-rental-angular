@@ -1,4 +1,8 @@
 .footer-container{
+    position:absolute; 
+    bottom:0;
+    right:0;
+    left:0;
     padding:1rem;
     background-color: var(--dark-footer);
     text-align:center;
@@ -40,7 +44,19 @@
     }    
 }
 
+.hidden{
+    position:unset;
+    background-color: transparent; 
+    color:transparent;
+    cursor:default;
+    .lower-footer{
+        border-top:none;
+    }
+    .maps-replacement{
+        display:none;
+    }
 
+}
 @media (min-width:760px){
     .footer-container{
         padding:1.5rem;
@@ -65,6 +81,13 @@
         }
         .lower-footer{
             text-align:center;
+        }
+    }
+    .hidden{
+        .maps-replacement{
+            display:inline-block;
+            width:500px;
+            height: 330px;
         }
     }
 }

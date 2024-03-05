@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,6 +9,10 @@ import { RouterModule } from '@angular/router';
   templateUrl: './conditions.component.html',
   styleUrl: './conditions.component.scss'
 })
-export class ConditionsComponent {
+export class ConditionsComponent implements OnInit{
+  constructor( private titleService: Title){}
+  ngOnInit(): void {
+    this.titleService.setTitle('Termeni si Conditii | Eurotour - Inchirieri masini Cluj-Napoca')
+  }
 
 }

@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CarTypes, CarsByCategory } from '../../types';
 import { carTypes, getCarsByCategory } from '../../fake-data';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class PricesComponent implements OnInit{
   cars:string[][]=[]; 
   display:boolean[]=[]; 
   
-  constructor(){}
+  constructor(private titleService: Title){}
   ngOnInit(): void {
     this.carTypes = carTypes; 
     carTypes.forEach(type=> {
@@ -26,6 +27,10 @@ export class PricesComponent implements OnInit{
       this.cars.push(getCarsByCategory(type.carType).carNames);
       this.display.push(false); 
     })
+
+
+    this.titleService.setTitle('Tarife | Eurotour - Inchirieri masini Cluj-Napoca')
+  
   }
   toggle(index:number):void{
     if (this.display[index] === true) this.display[index]=false

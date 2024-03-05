@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { carsAllInfo, getCarById } from '../../fake-data';
 import { CommonModule} from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -29,9 +30,10 @@ export class ReservationComponent implements OnInit{
   endTime!:string;  
   assurance: boolean = false;
   
-  constructor(private route:ActivatedRoute, private router:Router){
+  constructor(private route:ActivatedRoute, private router:Router, private titleService:Title){
   }
   ngOnInit(): void {
+    this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
     this.setTheCar();
     this.setTheDate();
