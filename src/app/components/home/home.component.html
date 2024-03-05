@@ -18,11 +18,11 @@
             <ul class="car-details">
                 <li class="engines">
                     <h3>Combustibil</h3>
-                    <span>{{car.specs[0].fuel}}</span>
+                    <span>{{car.specs[0].fuel | titlecase}}</span>
                 </li>
                 <li class="gearbox">
                     <h3>Transmisie</h3>
-                    <span>{{car.specs[1].gear}}</span>
+                    <span>{{car.specs[1].gear | titlecase}}</span>
                 </li>
             </ul>
             <div class="car-buttons">

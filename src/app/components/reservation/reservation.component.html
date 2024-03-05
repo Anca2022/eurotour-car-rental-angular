@@ -7,13 +7,13 @@
         <input type="text" name="_honey" style="display:none;">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_next" value="https://resilient-choux-32abd2.netlify.app/succes.html">
-        <div class="reservation centered">
+        <div class="reservation centered"> 
             <div class="car-select">
                 <h2>Selectează mașina</h2>
-                <select name="selected&nbsp;car" id="selected-car" required [value]="currentCar.id" #selectedCar (change)="carSelect(selectedCar.value)" >
-                    <option *ngFor="let eachCar of allCars" [value]="eachCar.id">{{eachCar.name}}</option>
+                <select name="selected&nbsp;car" required #selectedCar (change)="carSelect(selectedCar.value)" >
+                    <option *ngFor="let eachCar of allCars" [value]="eachCar.id" [selected]="eachCar === currentCar">{{eachCar.name}}</option>
                 </select>
-                <p class="reservation-price"><span id="no-days">10</span> zile x <span id="price-per-day">26</span>€/zi<span class="price-all-days">260€</span></p>
+                <p class="reservation-price"><span>{{numberDays}} zile x {{priceDay}}€/zi</span><span class="price-all-days">{{priceAllDays}}€</span></p>
 
                 <div class="reservation-img">
                     <img [src]="currentCar.img" [alt]="currentCar.name">
@@ -50,14 +50,19 @@
         
         <div class="summary centered">
             <h2>Sumar Rezervare</h2>
-            <div>Preț închiriere <span id="trip-price">26€</span></div>
-            <div>Garanție <span id="warranty">200€</span></div>
-            <div class="show-scdw"><input type="checkbox" name="assurance" id="assurance-check" onchange="updateTotal();">  <label for="assurance" title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">asigurare facultativă <i class="fa-solid fa-circle-info"></i><span id="assurance">40€</span> </label></div>
-            <div class="total-price"> PREȚ TOTAL <span id="final-price">41€</span></div>
+            <div>Preț închiriere <span >{{priceAllDays}}€</span></div>
+            <div>Garanție <span>{{currentCar.warranty}}€</span></div>
+            <div class="show-scdw">
+                <input type="checkbox" name="assurance" id="assurance" #assurance (click)="updateTotal(assurance)">  
+                <label for="assurance" title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">asigurare facultativă <i class="fa-solid fa-circle-info"></i></label>
+                <span>{{currentCar.assurance}}€</span> 
+            </div>
+            <div class="total-price"> PREȚ TOTAL <span>{{totalPrice}}€</span></div>
+            <div *ngIf="negotiable" class="negotiable">* Având în vedere că perioada aleasă este mai mare de 21 de zile, prețul de închiriere este negociabil!</div>
         </div>
 
         <div class="accord centered">
-            <input type="checkbox" required name="accord" id="" oninvalid="this.setCustomValidity('Pentru a face rezervarea trebuie sa acceptati Termenii si Conditiile')" oninput="setCustomValidity('')"> 
+            <input type="checkbox" required name="accord" id="accord" oninvalid="this.setCustomValidity('Pentru a face rezervarea trebuie sa acceptati Termenii si Conditiile')" oninput="setCustomValidity('')"> 
             <label for="accord">Sunt de acord cu Termenii și Condițiile </label>
         </div>
         <input type="submit" value="Trimite Rezervarea" class="submit-btn" >

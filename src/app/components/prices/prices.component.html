@@ -18,7 +18,7 @@
         </div>
         <div class="row" *ngFor="let carType of carTypes; let i=index">
                 <span class="car-name" (click)="toggle(i)">
-                    <span>{{carType.carType}} <i class="fa-solid fa-caret-down"></i></span>
+                    <span>{{carType.carType | titlecase}} <i class="fa-solid fa-caret-down"></i></span>
                     <span class="cars-in-category" 
                         [class.display-cars-in-category]="display[i]" 
                         *ngFor="let car of cars[i]">

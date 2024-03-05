@@ -9,18 +9,18 @@
             <div class="specs">
                 <h3>Specificatii</h3>
                 <ul>
-                    <li>Tip combustibil: <span>{{car.specs[0].fuel}}</span></li>
-                    <li>Cutie de viteze: <span>{{car.specs[1].gear}}</span></li>
+                    <li>Tip combustibil: <span>{{car.specs[0].fuel | titlecase}}</span></li>
+                    <li>Cutie de viteze: <span>{{car.specs[1].gear | titlecase}}</span></li>
                     <li>Volum portbagaj 
                         <span class="trunk"><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 4}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 3}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 2}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 1}"></i><i class="fa-solid fa-suitcase-rolling" [ngClass]="{'black': car.specs[2].trunk > 0}"></i> </span>
                     </li>
-                    <li>Categorie: <span>{{car.carType}}</span></li>
+                    <li>Categorie: <span>{{car.carType | titlecase}}</span></li>
                 </ul>
             </div>
             <div class="car-equipment">
-                <h3 >Dotari</h3>
+                <h3 >Dotări</h3>
                 <ul>
-                    <li *ngFor="let equip of car.equipment">{{equip}}</li>
+                    <li *ngFor="let equip of car.equipment">{{equip | titlecase}}</li>
                 </ul>
             </div>                     
         </div>
@@ -41,7 +41,7 @@
                     
                 </div>  
             </div>
-            <p class="negotiable">Pentru o perioada mai mare de 21 de zile, pretul de inchiriere este <strong>negociabil.</strong></p>
+            <p class="negotiable">Daca alegeti o perioada mai mare de 21 de zile, prețul de închiriere este <strong>negociabil.</strong></p>
         </div>
         <div class="price-total">
             <p>Tarifele sunt exprimate in EURO/zi de inchiriere si includ: TVA, R.C.A, ROVINIETA, ASIGURARE CASCO, ANVELOPE DE IARNA, kilometraj nelimitat, mentenanta conform specificatiilor producatorului, asistenta rutiere 24/7.</p>
