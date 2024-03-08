@@ -1,9 +1,9 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FAQ } from '../../types';
-import { fakeQuestions } from '../../fake-data';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { ContentfulService } from '../../services/contentful.service';
 
 @Component({
   selector: 'app-faq',
@@ -14,10 +14,11 @@ import { Title } from '@angular/platform-browser';
 })
 export class FaqComponent implements OnInit{
   questions:FAQ[]=[];
-  constructor(private titleService:Title){}
+  constructor(private titleService:Title, 
+      private contentful: ContentfulService){}
   ngOnInit(): void {
-    this.questions = fakeQuestions; 
     this.titleService.setTitle('Intrebari Frecvente | Eurotour - Inchirieri masini Cluj-Napoca')
+    this.questions = this.contentful.getQuestions(); 
   }
   
   toggleAnswer(t:any){

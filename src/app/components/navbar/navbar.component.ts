@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { carsAllInfo } from '../../fake-data';
 import { ScrollDirective } from '../../directives/scroll.directive';
+import { ContentfulService } from '../../services/contentful.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,9 +13,10 @@ import { ScrollDirective } from '../../directives/scroll.directive';
 export class NavbarComponent implements OnInit{
   carId!:string; 
 
-  constructor(){}
+  constructor(private contentful:ContentfulService){}
   ngOnInit(): void {
-    this.carId = carsAllInfo[0].id; 
+    this.carId= this.contentful.getId(); 
+   // console.log(this.carId)
   }
   //mobile menu
 

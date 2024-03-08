@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
-import { carsAllInfo, getCarById } from '../../fake-data';
 import { CommonModule} from '@angular/common';
 import { Title } from '@angular/platform-browser';
+import { ContentfulService } from '../../services/contentful.service';
 
 
 @Component({
@@ -30,17 +30,33 @@ export class ReservationComponent implements OnInit{
   endTime!:string;  
   assurance: boolean = false;
   
-  constructor(private route:ActivatedRoute, private router:Router, private titleService:Title){
+  constructor(private route:ActivatedRoute, 
+    private titleService:Title,
+    private contentful:ContentfulService){
   }
   ngOnInit(): void {
     this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
+
     this.setTheCar();
     this.setTheDate();
   }
 
+  setTheCar():void{
+    this.currentCar = this.contentful.getCarById(this.id);
+    this.allCars = this.contentful.getAllInfo();
+    this.priceDay=this.currentCar.price[0].dayOneThree;
+    this.priceAllDays = this.numberDays * this.priceDay;
+    this.totalPrice = this.priceAllDays;
+  }
+
+  setTheDate(){
+    this.startDate = new Date (this.today); 
+    this.endDate = new Date(this.today); 
+    this.endDate.setDate(this.today.getDate() + 1);
+  }
   carSelect(id:string){
-    this.currentCar = getCarById(id);
+    this.currentCar = this.contentful.getCarById(id);
     this.updatePrices(); 
   }
 
@@ -94,19 +110,6 @@ export class ReservationComponent implements OnInit{
       this.totalPrice = this.priceAllDays + this.currentCar.assurance
   }
   
-  setTheCar():void{
-    this.currentCar = getCarById(this.id);
-    this.allCars = carsAllInfo; 
-    this.priceDay=this.currentCar.price[0].dayOneThree;
-    this.priceAllDays = this.numberDays * this.priceDay;
-    this.totalPrice = this.priceAllDays;
-  }
-
-  setTheDate(){
-    this.startDate = new Date (this.today); 
-    this.endDate = new Date(this.today); 
-    this.endDate.setDate(this.today.getDate() + 1);
-  }
 }
 
 
