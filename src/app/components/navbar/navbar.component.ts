@@ -29,12 +29,4 @@ export class NavbarComponent implements OnInit{
       t2.classList.remove('display-exit-btn');
     }
 
-  //language menu
-  addLang(t:any){
-    t.classList.add('display-languages');
-  }
-  removeLang(t:any) {
-    t.classList.remove('display-languages');
-    }
-
 }

@@ -8,14 +8,8 @@
         </div>    
         <div class="right-side-header">
             <div class="upper-nav">
-                <p><a href="tel://+40 (766) 540 549"><i class="fa-solid fa-phone"></i> <span class="contact-no"> +40 766 540 549</span></a></p>
-                <div class="language"  (mouseover)="addLang(language)" (mouseleave)="removeLang(language)">
-                    <img src="../../../assets/romania-flag.png" alt="romanian flag"> <span>RO</span> <i class="fa-solid fa-caret-down"></i>
-                    <div class="other-language" #language>
-                        <div><a routerLink="/home"><img src="../../../assets/romania-flag.png" alt="romanian flag"><span>RO</span></a></div> 
-                        <div><a href="home.html"><img src="../../../assets/united-kingdom-flag.png" alt="UK flag"><span>EN</span></a></div>
-                    </div>    
-                </div>
+                <a href="tel://+40 (766) 540 549"><i class="fa-solid fa-phone"></i> +40 766 540 549</a>
+                <div id="google_translate_element" class="language"></div>
             </div> 
             
             <nav class="navbar" #navigation >
@@ -29,3 +23,5 @@
         </div>
     </div>
 </div>
+
+

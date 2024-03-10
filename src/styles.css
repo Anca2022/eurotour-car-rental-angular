@@ -18,6 +18,18 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+ /* Google Translate */
+ /* div.skiptranslate.goog-te-gadget{
+  background-color: red;
+ }  */
+
+  
+    /* display: inline-block;
+    color:transparent !important; 
+    margin-bottom: -20px;
+    span > a{
+        display:none;
+    } */
 
 ul {
   list-style-type: none;
