@@ -10,7 +10,7 @@ export class ContentfulService {
   cars:any[]=[]; 
   carTypes:any[]=[]; 
   carsAllInfo:any[]=[];
-  id!:any; 
+  id:any[]=[]; 
 
   constructor() { }
 
@@ -51,13 +51,13 @@ export class ContentfulService {
           }
           this.questions.push(quest);
         }
-      })
+      }) 
+      this.id.push(this.cars[0].id); 
       this.joinAllInfo();
-     this.id=this.cars[0].id; //aici merge si il atribuie, in getter nu il mai citeste
     })
   }
 
- joinAllInfo():void{
+  joinAllInfo():void{
      this.cars.forEach(eachCar => { 
       let category = this.carTypes.find(cat => cat.carType === eachCar.carType);
       if(category!==undefined){
@@ -77,7 +77,6 @@ export class ContentfulService {
       }
     })
   }
-
 
   getAllInfo():CarAllInfo[]{
     return this.carsAllInfo; 
@@ -106,11 +105,11 @@ export class ContentfulService {
     return this.carTypes; 
   }
 
-  getQuestions():FAQ[]{
+  getQuestions():FAQ[]{    
     return this.questions; 
   }
 
-  getId():string{
-    return this.id;
+  getId():string[]{
+    return this.id; 
   }
 }

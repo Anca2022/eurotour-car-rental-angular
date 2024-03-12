@@ -11,19 +11,20 @@ import { ContentfulService } from '../../services/contentful.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
-  carId!:string; 
+  carIds:string[]=[];  
 
   constructor(private contentful:ContentfulService){}
+
   ngOnInit(): void {
-    this.carId= this.contentful.getId(); 
-   // console.log(this.carId)
+  this.carIds = this.contentful.getId();
   }
+
   //mobile menu
 
   openMenu(t1:any, t2:any){
           t1.classList.add('display-menu');
           t2.classList.add('display-exit-btn');
-      };
+      }
   closeMenu(t1:any, t2:any){
       t1.classList.remove('display-menu');
       t2.classList.remove('display-exit-btn');

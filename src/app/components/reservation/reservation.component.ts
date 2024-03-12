@@ -4,12 +4,13 @@ import { CarAllInfo } from '../../types';
 import { CommonModule} from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { ContentfulService } from '../../services/contentful.service';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-reservation',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './reservation.component.html',
   styleUrl: './reservation.component.scss'
 })

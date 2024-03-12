@@ -1,8 +1,9 @@
 .price-page{
     padding: 3rem 0;
     .price-text{
+        padding: 0 0.5rem;
         p{
-            padding: 1rem 0.5rem;
+            padding:1rem 0.5rem;
             font-size: 1.1rem;
         }
         .negotiable{
@@ -93,7 +94,7 @@
 @media (min-width:1024px){
     .price-page{
         .price-text p{
-                font-size: 1.2rem;
+            font-size: 1.2rem;
         }
     }
 }
