@@ -3,8 +3,9 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule} from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { ContentfulService } from '../../services/contentful.service';
+//import { ContentfulService } from '../../services/contentful.service';
 import { FormsModule } from '@angular/forms';
+import { carsAllInfo, getCarById } from '../../fake-data';
 
 
 @Component({
@@ -32,8 +33,9 @@ export class ReservationComponent implements OnInit{
   assurance: boolean = false;
   
   constructor(private route:ActivatedRoute, 
-    private titleService:Title,
-    private contentful:ContentfulService){
+    private titleService:Title
+    //,private contentful:ContentfulService
+    ){
   }
   ngOnInit(): void {
     this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
@@ -44,8 +46,10 @@ export class ReservationComponent implements OnInit{
   }
 
   setTheCar():void{
-    this.currentCar = this.contentful.getCarById(this.id);
-    this.allCars = this.contentful.getAllInfo();
+    // this.currentCar = this.contentful.getCarById(this.id);
+    // this.allCars = this.contentful.getAllInfo();
+    this.currentCar = getCarById(this.id);
+    this.allCars = carsAllInfo;
     this.priceDay=this.currentCar.price[0].dayOneThree;
     this.priceAllDays = this.numberDays * this.priceDay;
     this.totalPrice = this.priceAllDays;
@@ -57,7 +61,8 @@ export class ReservationComponent implements OnInit{
     this.endDate.setDate(this.today.getDate() + 1);
   }
   carSelect(id:string){
-    this.currentCar = this.contentful.getCarById(id);
+    //this.currentCar = this.contentful.getCarById(id);
+    this.currentCar = getCarById(id);
     this.updatePrices(); 
   }
 

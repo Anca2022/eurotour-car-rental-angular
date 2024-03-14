@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { ContentfulService } from '../../services/contentful.service';
+import { carsAllInfo } from '../../fake-data';
+//import { ContentfulService } from '../../services/contentful.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,17 @@ import { ContentfulService } from '../../services/contentful.service';
 })
 export class HomeComponent implements OnInit{
  carsAllInfo:CarAllInfo[]=[];   
-  constructor(private titleService:Title,
-      private contentful:ContentfulService){    }
-  ngOnInit(): void {
+
+ constructor(private titleService:Title){}
+ ngOnInit(): void {
     this.titleService.setTitle('Eurotour - Inchirieri masini Cluj-Napoca');
-    this.carsAllInfo = this.contentful.getAllInfo(); 
-  }
+    this.carsAllInfo = carsAllInfo; 
+ }
+
+  // constructor(private titleService:Title,
+  //     private contentful:ContentfulService){    }
+  // ngOnInit(): void {
+  //   this.titleService.setTitle('Eurotour - Inchirieri masini Cluj-Napoca');
+  //   this.carsAllInfo = this.contentful.getAllInfo(); 
+  // }
 }

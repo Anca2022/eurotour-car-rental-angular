@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CarTypes, CarsByCategory } from '../../types';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { ContentfulService } from '../../services/contentful.service';
+import { carTypes, getCarsByCategory } from '../../fake-data';
+//import { ContentfulService } from '../../services/contentful.service';
 
 
 @Component({
@@ -19,15 +20,18 @@ export class PricesComponent implements OnInit{
   cars:string[][]=[]; 
   display:boolean[]=[]; 
   
-  constructor(private titleService: Title, 
-    private contentful:ContentfulService){}
+  constructor(private titleService: Title 
+   // ,private contentful:ContentfulService
+   ){}
   ngOnInit(): void {
     this.titleService.setTitle('Tarife | Eurotour - Inchirieri masini Cluj-Napoca')
 
-    this.carTypes = this.contentful.getCarCategories();
+    //this.carTypes = this.contentful.getCarCategories();
+    this.carTypes = carTypes; 
 
     this.carTypes.forEach(type=> {
-      let carsByCat:CarsByCategory = this.contentful.getCarsByCategory(type.carType); 
+     // let carsByCat:CarsByCategory = this.contentful.getCarsByCategory(type.carType); 
+     let carsByCat:CarsByCategory = getCarsByCategory(type.carType);
       this.ids.push(carsByCat.id); 
       this.cars.push(carsByCat.carNames);
       this.display.push(false); 

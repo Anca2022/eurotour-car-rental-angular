@@ -1,7 +1,8 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollDirective } from '../../directives/scroll.directive';
-import { ContentfulService } from '../../services/contentful.service';
+import { cars } from '../../fake-data';
+//import { ContentfulService } from '../../services/contentful.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,13 +12,15 @@ import { ContentfulService } from '../../services/contentful.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
-  carIds:string[]=[];  
-
-  constructor(private contentful:ContentfulService){}
+  carId!:string;  
 
   ngOnInit(): void {
-  this.carIds = this.contentful.getId();
+    this.carId = cars[0].id
   }
+ // constructor(private contentful:ContentfulService){}
+  // ngOnInit(): void {
+  // this.carIds = this.contentful.getId();
+  // }
 
   //mobile menu
 

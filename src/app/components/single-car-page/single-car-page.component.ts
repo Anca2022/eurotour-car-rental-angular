@@ -3,7 +3,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { ContentfulService } from '../../services/contentful.service';
+import { getCarById } from '../../fake-data';
+//import { ContentfulService } from '../../services/contentful.service';
 
 @Component({
   selector: 'app-single-car-page',
@@ -16,11 +17,13 @@ export class SingleCarPageComponent implements OnInit {
   id!:string; 
   car!:CarAllInfo; 
   constructor(private route:ActivatedRoute,
-     private titleService:Title,
-     private contentful:ContentfulService){}
+     private titleService:Title
+    //  ,private contentful:ContentfulService
+     ){}
   ngOnInit(): void {
     this.titleService.setTitle('Detalii Masina | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe((param)=> this.id = param['id']);
-    this.car = this.contentful.getCarById(this.id);
+    this.car = getCarById(this.id); 
+    // this.car = this.contentful.getCarById(this.id);
   }
 }
