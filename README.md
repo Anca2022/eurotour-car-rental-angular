@@ -10,11 +10,18 @@ This project aims to provide a user-friendly platform for a car rental firm base
 <b>Dynamic Pricing</b>: Rental prices are dynamically calculated based on the selected time interval. </br>
 <b>Rental Form</b>: An easy-to-use form allows users to submit their desired car model and rental interval.
 
-<!-- ## Preview
-For a sneak peek at the Euro Tour Car Rental website, here are some printscreens of the page: -->
+## Preview
+For a sneak peek at the Euro Tour Car Rental website, here are some printscreens of the page:
+![Screenshot 2024-03-14 150721](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/1f585242-ba89-45be-9f69-91c2d0c649c7)
+
+![Screenshot 2024-03-14 150754](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/aa7e0dd4-a2fe-45b7-870d-0460d9c64ef0)
+
+![Screenshot 2024-03-14 150958](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/c37aa9d1-ccf3-4098-b8a1-b4178d8d6df4)
+
+
 
 ## Technologies Used
-Angular Framework
+Angular Framework </br>
 Contentful CMS
 
 ## How to Run
