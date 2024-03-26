@@ -1,6 +1,6 @@
 <div class="container terms">
     <h1 class="title">Întrebări frecvente</h1>
-    <div class="questions">
+    <div class="questions" *ngIf="questions$ | async as questions">
         <div class="question-unit" *ngFor="let questionUnit of questions"  #questionDiv (click)="toggleAnswer(questionDiv)">
             <div class="question">{{questionUnit.question}} </div>
             <div class="answer">{{questionUnit.answer}}</div>

@@ -1,11 +1,42 @@
-// import { Injectable } from '@angular/core';
-// import { createClient } from 'contentful';
-// import { Car, CarAllInfo, CarTypes, CarsByCategory, FAQ } from '../types';
+import { Injectable } from '@angular/core';
+import { createClient } from 'contentful';
+import { Car, CarAllInfo, CarTypes, CarsByCategory, FAQ } from '../types';
+import { Observable, concatAll, defer, filter, map, tap, toArray } from 'rxjs';
 
-// @Injectable({
-//   providedIn: 'root', 
-// })
-// export class ContentfulService {
+@Injectable({
+  providedIn: 'root', 
+})
+export class ContentfulService {
+  constructor() { }
+
+  private client = createClient({
+    space: 'u6ixfmcgy98k', 
+    accessToken: 'XrwuMZKyYT8o_-sd-3aQGa7d0Cypa6oNrckFLXUBgmY'
+  })
+
+  private questions:Promise<any> = this.client.getEntries({content_type:'faq'});
+  questions$:Observable<FAQ[]>=defer(()=>this.questions).pipe(
+    map( data => {
+      let array : FAQ[] = []; 
+      for(let i=0; i<data.items.length; i++)
+        array.push(data.items[i].fields);
+      return array;
+    }), 
+  )
+
+}
+  
+
+
+
+
+
+
+
+
+function forEach(arg0: (item: any) => any): import("rxjs").OperatorFunction<any, any> {
+  throw new Error('Function not implemented.');
+}
 //   questions:any[]=[]; 
 //   cars:any[]=[]; 
 //   carTypes:any[]=[]; 
