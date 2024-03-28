@@ -41,7 +41,6 @@ export interface CarAllInfo{
     promo:boolean
 }
 
-export interface CarsByCategory {
-    id:string,
-    carNames: string[]
+export interface CarsInCategory extends CarTypes{
+    carsInCategory: Car[]
 }

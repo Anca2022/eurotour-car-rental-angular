@@ -4,14 +4,13 @@
         <p>Oferim soluții de mobilitate pentru toate bugetele</p>        
     </div>
 </section>
-
 <section class="fleet container">
     <h2 class="title">Flota noastră vă stă la dispoziție</h2>
-    <div *ngIf="carsAllInfo.length<1">
-    <p>A aparut o eroare de incarcare. Va rugam sa incercati mai tarziu.</p>
-    </div>
-    <div class="cars">
-        <div class="car" *ngFor="let car of carsAllInfo">
+    <ng-template #eroare>
+        <p >A apărut o eroare de încărcare. Vă rugăm să reîncercați.</p>
+    </ng-template>
+    <div class="cars" *ngIf="cars$ | async as cars; else eroare">
+        <div class="car" *ngFor="let car of cars">
             <div class="promo" *ngIf="car.promo">de la 
             <span>{{car.price[2].dayEightTwentyOne | currency: 'EUR' : 'symbol' : '2.0-0'}}</span> 
             <br/>/zi
@@ -34,4 +33,5 @@
             </div>
         </div>
     </div>
+   
 </section>

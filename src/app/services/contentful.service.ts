@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createClient } from 'contentful';
-import { Car, CarAllInfo, CarTypes, CarsByCategory, FAQ } from '../types';
-import { Observable, concatAll, defer, filter, map, tap, toArray } from 'rxjs';
+import { Car, CarAllInfo, CarTypes, CarsInCategory, FAQ } from '../types';
+import { Observable, combineLatest, concatAll, defer, filter, map, tap, toArray } from 'rxjs';
 
 @Injectable({
   providedIn: 'root', 
@@ -15,6 +15,9 @@ export class ContentfulService {
   })
 
   private questions:Promise<any> = this.client.getEntries({content_type:'faq'});
+  private cars:Promise<any> = this.client.getEntries({content_type:'car'});
+  private carTypes:Promise<any> = this.client.getEntries({content_type:'carType'});
+
   questions$:Observable<FAQ[]>=defer(()=>this.questions).pipe(
     map( data => {
       let array : FAQ[] = []; 
@@ -24,6 +27,96 @@ export class ContentfulService {
     }), 
   )
 
+  cars$:Observable<Car[]>=defer(()=>this.cars).pipe(
+    map(data => {
+      let array : Car[] = []; 
+      for(let i=0; i<data.items.length; i++){
+        let image:any= data.items[i].fields['img'];
+        let car:Car={
+          id : data.items[i].fields['id'], 
+          name: data.items[i].fields['name'], 
+          img: image.fields.file.url, 
+          specs: [{fuel: data.items[i].fields['fuel']}, {gear: data.items[i].fields['gear']}, {trunk : data.items[i].fields['trunk']} ],
+          equipment: data.items[i].fields['equipment'],
+          carType: data.items[i].fields['carType']
+        }
+        array.push(car);
+      }
+      return array;
+    }), 
+  )
+
+  carTypes$:Observable<CarTypes[]>=defer(()=>this.carTypes).pipe(
+    map(data => {
+      let array : CarTypes[] = []; 
+      for(let i=0; i<data.items.length; i++){
+        let carType:CarTypes={
+          carType : data.items[i].fields['carType'],
+          price: [{dayOneThree:data.items[i].fields['dayOneThree']}, {dayFourSeven: data.items[i].fields['dayFourSeven']}, {dayEightTwentyOne: data.items[i].fields['dayEightTwentyOne']}], 
+          warranty: data.items[i].fields['warranty'], 
+          assurance: data.items[i].fields['assurance'], 
+          promo:data.items[i].fields['promo']
+        }
+        array.push(carType);
+      }
+      return array;
+    })
+  )
+
+  carsAllInfo$:Observable<CarAllInfo[]>=combineLatest([this.cars$, this.carTypes$]).pipe( 
+    map(([cars, cartypes])=> {  
+      let carsAllInfo:CarAllInfo[]=[]; 
+      for(let i=0; i<cars.length; i++){
+        let prices:any; 
+        let promos:any; 
+        let warranties:any;
+        let assurances:any;  
+        for(let j=0; j<cartypes.length; j++){
+          if(cartypes[j].carType === cars[i].carType){
+            prices = cartypes[j].price;
+            promos = cartypes[j].promo;
+            warranties = cartypes[j].warranty; 
+            assurances = cartypes[j].assurance; 
+          }
+        } 
+        let carAllInfo:CarAllInfo = {
+          ...cars[i],
+          price: prices,
+          promo: promos,
+          warranty: warranties, 
+          assurance: assurances
+        }
+        carsAllInfo.push(carAllInfo); 
+      }
+      return carsAllInfo;
+    })
+  )
+
+  carCategoryExtra$:Observable<CarsInCategory[]> = combineLatest([this.cars$, this.carTypes$]).pipe(
+    map(([cars, cartype])=>{
+      let categoriesExtra:CarsInCategory[]=[];
+      cartype.forEach(type=>{
+        let carsInCat = cars.filter(car => car.carType === type.carType )
+        let categoryExtra:CarsInCategory={
+          ...type, 
+          carsInCategory: carsInCat
+        }
+        categoriesExtra.push(categoryExtra);
+      })
+      return categoriesExtra;   
+    }),
+    tap(console.log)
+  )
+
+
+//!!! aici merge find!!! 
+  getCarById(id:string):Observable<CarAllInfo>{
+    return this.carsAllInfo$.pipe(
+      map(cars => {
+        return cars.find(car => car.id === id)!
+      })
+    )
+  }
 }
   
 
@@ -34,9 +127,6 @@ export class ContentfulService {
 
 
 
-function forEach(arg0: (item: any) => any): import("rxjs").OperatorFunction<any, any> {
-  throw new Error('Function not implemented.');
-}
 //   questions:any[]=[]; 
 //   cars:any[]=[]; 
 //   carTypes:any[]=[]; 

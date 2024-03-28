@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CarTypes, CarsByCategory } from '../../types';
 import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
-import { carTypes, getCarsByCategory } from '../../fake-data';
-//import { ContentfulService } from '../../services/contentful.service';
+import { ContentfulService } from '../../services/contentful.service';
+import { Observable } from 'rxjs';
+import { CarsInCategory } from '../../types';
 
 
 @Component({
@@ -15,31 +15,21 @@ import { carTypes, getCarsByCategory } from '../../fake-data';
   styleUrl: './prices.component.scss'
 })
 export class PricesComponent implements OnInit{
-  carTypes:CarTypes[]=[]; 
-  ids:string[]=[];
-  cars:string[][]=[]; 
+
   display:boolean[]=[]; 
+  carCategories$!:Observable<CarsInCategory[]>; 
   
-  constructor(private titleService: Title 
-   // ,private contentful:ContentfulService
-   ){}
+  constructor(private titleService: Title,
+    private contentful:ContentfulService){}
   ngOnInit(): void {
     this.titleService.setTitle('Tarife | Eurotour - Inchirieri masini Cluj-Napoca')
 
-    //this.carTypes = this.contentful.getCarCategories();
-    this.carTypes = carTypes; 
-
-    this.carTypes.forEach(type=> {
-     // let carsByCat:CarsByCategory = this.contentful.getCarsByCategory(type.carType); 
-     let carsByCat:CarsByCategory = getCarsByCategory(type.carType);
-      this.ids.push(carsByCat.id); 
-      this.cars.push(carsByCat.carNames);
-      this.display.push(false); 
-    })
+    this.carCategories$ = this.contentful.carCategoryExtra$;
   }
+
   toggle(index:number):void{
     if (this.display[index] === true) this.display[index]=false
-    else this.display[index]=true;
+    else this.display[index] = true;
   }
 
 }

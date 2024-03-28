@@ -1,4 +1,4 @@
-<div class="container car-page">
+<div class="container car-page" *ngIf="car$ | async as car">
     <h1 class="title">{{car.name}}</h1>
     <div class="particular-car">
         <div class="car-photo">

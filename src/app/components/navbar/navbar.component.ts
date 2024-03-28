@@ -1,8 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScrollDirective } from '../../directives/scroll.directive';
-import { cars } from '../../fake-data';
-//import { ContentfulService } from '../../services/contentful.service';
+import { ContentfulService } from '../../services/contentful.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -11,16 +11,18 @@ import { cars } from '../../fake-data';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit, OnDestroy{
   carId!:string;  
+  sub!: Subscription; 
+  constructor(private contentful:ContentfulService){}
 
-  ngOnInit(): void {
-    this.carId = cars[0].id
+  ngOnInit(): void{
+    this.sub = this.contentful.cars$.subscribe(cars => this.carId = cars[0].id)
   }
- // constructor(private contentful:ContentfulService){}
-  // ngOnInit(): void {
-  // this.carIds = this.contentful.getId();
-  // }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 
   //mobile menu
 

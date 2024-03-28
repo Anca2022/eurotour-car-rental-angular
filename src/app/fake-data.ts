@@ -1,4 +1,4 @@
-import { Car, CarTypes, CarAllInfo, FAQ, CarsByCategory } from "./types";
+import { Car, CarTypes, CarAllInfo, FAQ } from "./types";
 
 export const fakeQuestions:FAQ[] =[
     {question:'De ce ploua noaptea?', answer:'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus, nam.'},
@@ -25,16 +25,16 @@ export function getCarById(id:string):CarAllInfo{
     return carsAllInfo.find(car=> car.id === id)!; 
 }
 
-export function getCarsByCategory(cat:string):CarsByCategory{
-    let carCat:CarAllInfo[] = carsAllInfo.filter(car => car.carType === cat); 
-    let id:string = carCat[0].id; 
-    let cars:string[] = carCat.map(car => car.name); 
-    let carsByCategory: CarsByCategory = {
-        id: id,
-        carNames: cars
-    }
-    return carsByCategory;
-}
+// export function getCarsByCategory(cat:string):CarsByCategory{
+//     let carCat:CarAllInfo[] = carsAllInfo.filter(car => car.carType === cat); 
+//     let id:string = carCat[0].id; 
+//     let cars:string[] = carCat.map(car => car.name); 
+//     let carsByCategory: CarsByCategory = {
+//         id: id,
+//         carNames: cars
+//     }
+//     return carsByCategory;
+// }
 
 
 function joinData(cars:Car[], carTypes:CarTypes[]):void {
