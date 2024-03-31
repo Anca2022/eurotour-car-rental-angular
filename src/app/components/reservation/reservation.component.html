@@ -1,23 +1,25 @@
 <div class="container reservation-page">
     <h1 class="title">Rezervare mașină</h1>
-    <p class="reservation-info">Pentru rezervări, vă rugăm să sunați la numărul de telefon <a href="tel://+40 (766) 540 549">0755 934 953</a>, sau să completați formularul de mai jos. </p>
-    {{currentCar | json}}
-    {{priceDay | json}}
-    <form action="https://formsubmit.co/f25e4f074875849b81f48aaa5c959a16" method="POST" #reservationForm="ngForm">
-        <!--honeypot + disable captcha-->
-        <input type="text" name="_honey" style="display:none;">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="http://localhost:4200/succes">
+    <div class="reservation-info">
+        <p>Pentru rezervări, vă rugăm să sunați la numărul de telefon <a href="tel://+40 (766) 540 549">0755 934 953</a>, sau să completați formularul de mai jos. </p>
+        <p>Câmpurile marcate cu <strong><span>*</span> trebuie </strong>completate inainte să puteți trimite rezervarea.</p> 
+    </div>
+    <form #form #reservationForm="ngForm" (ngSubmit)="sendEmail($event)" >       
         <div class="reservation centered"> 
             <div class="car-select">
                 <h2>Selectează mașina</h2>
-                <select name="Masina&nbsp;aleasa" required #selectedCar (change)="carSelect(selectedCar.value)" >
-                    <option *ngFor="let eachCar of allCars" [value]="eachCar.id" [selected]="eachCar === currentCar">{{eachCar.name}}</option>
+                <small style="text-align: left; margin-top:5px;" *ngIf="tempCar.invalid && tempCar.touched">Vă rugăm să selectati masina dorita</small>
+                <select name="selected-car" #selectedCar (change)="carSelect(selectedCar.value)" 
+                #tempCar="ngModel" ngModel
+                required
+                [class.is-invalid]="tempCar.invalid && tempCar.touched">
+                    <option value="">Selectați mașina*</option>
+                    <option *ngFor="let eachCar of allCars" [value]="eachCar.id">{{eachCar.name}}</option>
                 </select>
                 <p class="reservation-price"><span>{{numberDays}} zile x {{priceDay}}€/zi</span><span class="price-all-days">{{priceAllDays}}€</span></p>
 
                 <div class="reservation-img">
-                    <img [src]="currentCar.img" [alt]="currentCar.name">
+                    <img [src]="currentCar.img" [alt]="currentCar.name"> 
                 </div>
             </div>
     
@@ -25,26 +27,38 @@
                 <h2>Alege Datele</h2>
                 <div class="pick-up-date centered">
                     <p>Dată preluare</p>
-                    <input type="date" name="Data&nbsp;preluare" id="pick-up" required [valueAsDate]="startDate" #pickupDate (change)="firstDate(pickupDate.value)">
-                    <div class="time"><input type="time" name="Ora&nbsp;preluare" #firstT (change)="firstTime(firstT.value)"></div>
+                    <input type="date" name="pickup" required [(ngModel)]="pickupDate" #pickup (change)="firstDate(pickup.value)" [min]="today.toISOString().split('T')[0]"  >
+                    <div class="time"><input type="time" name="pickup-h" #firstT (change)="firstTime(firstT.value)" ngModel></div>
                 </div>
                 <div class="dropoff-date centered">
                     <p>Dată predare</p>
-                    <input type="date" name="Data&nbsp;predare" id="dropoff" required  [valueAsDate]="endDate" #dropoffDate (change)="lastDate(dropoffDate.value)">
-                    <div class="time"><input type="time" name="Ora&nbsp;predare" #lastT (change)="lastTime(lastT.value)"></div>
+                    <input type="date" name="dropoff" required [(ngModel)]="dropoffDate" #dropoff (change)="lastDate(dropoff.value)" [min]="pickupDate" #tempDropoff="ngModel">
+                    <div class="time"><input type="time" name="dropoff-h" #lastT (change)="lastTime(lastT.value)" ngModel></div>
                 </div>
             </div>
     
             <div class="personal-info">
                 <h2>Date personale</h2>
                 <label for="name">Nume <span>*</span></label>
-                <input type="text" name="Nume" id="name" placeholder="Nume si prenume" required oninvalid="this.setCustomValidity('Va rugam sa completati numele si prenumele dumneavoastra')" oninput="setCustomValidity('')"> <br>
+                <input type="text" name="name" id="name" placeholder="Nume si prenume" 
+                    [(ngModel)]="name" #tempName="ngModel"
+                    required
+                    [class.is-invalid]="tempName.invalid && tempName.touched"> <br>
+                <small *ngIf="tempName.invalid && tempName.touched">Vă rugăm să introduceți numele d-voastră</small>
                 <label for="email">Email <span>*</span></label>
-                <input type="email" name="Email" placeholder="Adresa email"  id="email" required oninvalid="this.setCustomValidity('Va rugam sa completati o adresa de email valida')" oninput="setCustomValidity('')"> <br>
+                <input type="email" name="email" placeholder="Adresa email"  id="email" 
+                    [(ngModel)]="email" #tempEmail="ngModel"
+                    required pattern="[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}"
+                    [class.is-invalid]="tempEmail.invalid && tempEmail.touched">  <br>
+                <small *ngIf="tempEmail.invalid && tempEmail.touched">Vă rugăm să introduceți o adresă de email validă</small>
                 <label for="tel">Nr telefon <span>*</span></label>
-                <input type="tel" name="Numar&nbsp;telefon" placeholder="Numar de telefon"  id="tel" required oninvalid="this.setCustomValidity('Va rugam sa completati numarul de telefon')" oninput="setCustomValidity('')"> <br>
+                <input type="tel" name="tel" placeholder="Numar de telefon"  id="tel"  
+                    [(ngModel)]="phone" #tempPhone="ngModel"
+                    required
+                    [class.is-invalid]="tempPhone.invalid && tempPhone.touched"> <br>
+                    <small *ngIf="tempPhone.invalid && tempPhone.touched">Vă rugăm să introduceți numărul de telefon</small>
                 <label for="message">Mesaj</label>
-                <textarea name="Mesaj" placeholder="Informatii suplimentare" id="message" cols="30" rows="7"></textarea>
+                <textarea name="message" placeholder="Informatii suplimentare" id="message" cols="30" rows="7" [(ngModel)]="message"></textarea>
                 
             </div>
         </div>
@@ -54,7 +68,7 @@
             <div>Preț închiriere <span >{{priceAllDays}}€</span></div>
             <div>Garanție <span>{{currentCar.warranty}}€</span></div>
             <div class="show-scdw">
-                <input type="checkbox" name="Asigurare" id="assurance" #assuranceBox (click)="setAssurance(assuranceBox)">  
+                <input type="checkbox" name="assurance" id="assurance" [(ngModel)]="assurance" (change)="updatePrices()">  
                 <label for="assurance" title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">asigurare facultativă <i class="fa-solid fa-circle-info"></i></label>
                 <span>{{currentCar.assurance}}€</span> 
             </div>
@@ -63,15 +77,12 @@
         </div>
 
         <div class="accord centered">
-            <input type="checkbox" required id="accord" oninvalid="this.setCustomValidity('Pentru a face rezervarea trebuie sa acceptati Termenii si Conditiile')" oninput="setCustomValidity('')"> 
-            <label for="accord">Sunt de acord cu Termenii și Condițiile </label>
+            <input type="checkbox" required id="accord" name="accord" ngModel #tempAccord="ngModel" >
+            <label for="accord">Sunt de acord cu <a routerLink="/termeni-si-conditii">Termenii și Condițiile</a>*</label>
+            <small style="text-align: left;" *ngIf="reservationForm.invalid && tempAccord.invalid && tempAccord.touched">Pentru a face rezervarea trebuie să acceptați Termenii și Condițiile</small>
         </div>
-        <input type="submit" value="Trimite Rezervarea" class="submit-btn" >
+        <input type="submit" value="Trimite Rezervarea" class="submit-btn" [disabled]="reservationForm.invalid">
     </form>
-    <div class="reservation-other">
-    <p>* Preluarea și predarea autoturismelor se face la Aeroportul International Cluj-Napoca, de luni până duminică, în intervalul orar 09-18. </p>
-    <p>* Plata cu CARD-ul se poate face dacă aveti un CARD Visa sau Mastercard care să fie pe numele dvs.</p>
-    </div>
 </div>
    
 

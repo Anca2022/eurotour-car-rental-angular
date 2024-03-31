@@ -59,13 +59,17 @@
                 text-align:left;
                 cursor: pointer;
                 .cars-in-category{
-                    display:none;
-                }
-                .display-cars-in-category{
-                    display:block; 
-                    margin:0.4rem 0 0 1rem ;
+                    display:block;
+                    margin:-0.5rem 0 0 1rem;
                     text-align: left;
                     font-size: 1rem;
+                    height:0;
+                    overflow: hidden; 
+                   transition: 0.3s ease-out;
+                }
+                .display-cars-in-category{ 
+                    height:fit-content;
+                    margin-top:0.4rem;
                 }
             }
             span:nth-child(6){
@@ -95,6 +99,7 @@
     .price-page{
         .price-text p{
             font-size: 1.2rem;
+            padding:0.5rem;
         }
     }
 }

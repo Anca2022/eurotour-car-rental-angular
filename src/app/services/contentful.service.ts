@@ -104,8 +104,7 @@ export class ContentfulService {
         categoriesExtra.push(categoryExtra);
       })
       return categoriesExtra;   
-    }),
-    tap(console.log)
+    })
   )
 
 

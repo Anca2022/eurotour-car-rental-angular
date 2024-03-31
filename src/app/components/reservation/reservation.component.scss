@@ -1,5 +1,15 @@
 .reservation-page{
     padding: 3rem 0.5rem 2rem 0.5rem;
+    .is-invalid{
+        border:1px solid red; 
+        background-color: rgba(255, 0, 0, 0.05);
+    }
+    small{
+        display:block;
+        color:red;
+        text-align: right;
+    }
+    
     input, select, textarea{
         border-radius: 5px;
         border: 1px solid rgb(209, 209, 209);
@@ -8,11 +18,17 @@
         padding:0.3rem;
     }
     .reservation-info{
-        font-size:1.2rem;
+        font-size:1.15rem;
         padding-bottom:2.5rem;
         a{ 
             color: black;
             font-weight: 600;
+        }
+        p{
+            padding-bottom:1rem;
+            span{
+                font-size:1.3rem;
+            }
         }
     }
     .reservation{
@@ -167,6 +183,17 @@
         max-width: 500px;
         padding-top: 2rem;
         padding-left:1rem;
+        a{
+            color:black;
+            text-decoration: underline;
+        }
+    }
+    .submit-btn:disabled{
+        &:hover{
+            background-color: lightgray;
+            box-shadow: none;
+            cursor:auto;
+        }
     }
     .submit-btn{
         cursor: pointer;
@@ -183,12 +210,6 @@
         &:hover{
             background-color: var(--accent1);
             box-shadow: 3px 2px 5px #c2b49e;
-        }
-    }
-    .reservation-other{
-        p{ 
-            font-size: 0.8rem;
-            padding-bottom: 0.7rem;
         }
     }
 }
@@ -311,12 +332,6 @@
             font-size:1.5rem;
             margin: 5rem auto;
         }
-        .reservation-other{
-            p{ 
-                font-size: 0.9rem;
-                padding-bottom: 0.7rem;
-            }
-        } 
     }
 }
 
@@ -352,9 +367,6 @@
             font-size:1.1rem;
             max-width: 800px;  
             padding-left:7rem;
-        }
-        .reservation-other{
-            p{ font-size: 1rem;}
         }
     }
 }

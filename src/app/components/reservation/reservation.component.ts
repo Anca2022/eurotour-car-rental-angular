@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule} from '@angular/common';
 import { Title } from '@angular/platform-browser';
 //import { ContentfulService } from '../../services/contentful.service';
 import { FormsModule } from '@angular/forms';
 import { carsAllInfo, getCarById } from '../../fake-data';
-
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
 @Component({
   selector: 'app-reservation',
@@ -24,16 +24,27 @@ export class ReservationComponent implements OnInit{
   priceAllDays!:number;  
   negotiable:boolean=false; 
   totalPrice!:number; 
+  //Date format
   startDate!:any;  
   endDate!:any; 
+  // 'dd-mm-yyyy' format
+  pickupDate!:any;
+  dropoffDate!:any;
   today = new Date();
   initial:any; 
   startTime!:string;
   endTime!:string;  
+  
+  name!:string;
+  email!:string; 
+  phone!:string; 
+  message!:string;
   assurance: boolean = false;
+  date:string = '12-10-2024'
   
   constructor(private route:ActivatedRoute, 
-    private titleService:Title
+    private titleService:Title, 
+    private router: Router
     //,private contentful:ContentfulService
     ){
   }
@@ -41,15 +52,20 @@ export class ReservationComponent implements OnInit{
     this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
 
-    this.setTheCar();
+    
+    this.allCars = carsAllInfo;
+    this.currentCar = getCarById(this.id);
+    this.setTheCar(); 
     this.setTheDate();
+    
   }
 
+  
+  
   setTheCar():void{
     // this.currentCar = this.contentful.getCarById(this.id);
     // this.allCars = this.contentful.getAllInfo();
-    this.currentCar = getCarById(this.id);
-    this.allCars = carsAllInfo;
+    
     this.priceDay=this.currentCar.price[0].dayOneThree;
     this.priceAllDays = this.numberDays * this.priceDay;
     this.totalPrice = this.priceAllDays;
@@ -59,7 +75,10 @@ export class ReservationComponent implements OnInit{
     this.startDate = new Date (this.today); 
     this.endDate = new Date(this.today); 
     this.endDate.setDate(this.today.getDate() + 1);
+    this.pickupDate = this.startDate.toISOString().split('T')[0];
+    this.dropoffDate = this.endDate.toISOString().split('T')[0];
   }
+
   carSelect(id:string){
     //this.currentCar = this.contentful.getCarById(id);
     this.currentCar = getCarById(id);
@@ -86,17 +105,11 @@ export class ReservationComponent implements OnInit{
     this.calculateDays();
   }
   calculateDays():void{
-    let time = Math.abs(this.endDate - this.startDate); 
+    let time = this.endDate - this.startDate; 
     this.numberDays = Math.ceil(time / (1000 * 60 * 60 * 24)); 
     if (this.startTime < this.endTime) 
       this.numberDays++;
     this.updatePrices();
-  }
-
-  setAssurance(assuranceBox:any):void{
-    if(assuranceBox.checked) this.assurance = true
-    else this.assurance = false; 
-    this.updateTotal(); 
   }
 
   updatePrices(){
@@ -116,6 +129,23 @@ export class ReservationComponent implements OnInit{
       this.totalPrice = this.priceAllDays + this.currentCar.assurance
   }
   
+  public sendEmail(e: Event) {
+    emailjs
+      .sendForm('service_skr3des', 'template_ee1egdb', e.target as HTMLFormElement, {
+        publicKey: '03NYWpwwA_dm4-h_-',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          this.router.navigateByUrl('/succes')
+        },
+        (error) => {
+          console.log('FAILED...', (error as EmailJSResponseStatus).text);
+          alert("Eroare! Va rugam sa reincercati!")
+        },
+      );
+    
+  }
 }
 
 
