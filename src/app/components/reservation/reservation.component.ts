@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule} from '@angular/common';
 import { Title } from '@angular/platform-browser';
-//import { ContentfulService } from '../../services/contentful.service';
+import { ContentfulService } from '../../services/contentful.service';
 import { FormsModule } from '@angular/forms';
-import { carsAllInfo, getCarById } from '../../fake-data';
+//import { carsAllInfo, getCarById } from '../../fake-data';
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reservation',
@@ -15,15 +16,17 @@ import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
   templateUrl: './reservation.component.html',
   styleUrl: './reservation.component.scss'
 })
-export class ReservationComponent implements OnInit{
+export class ReservationComponent implements OnInit, OnDestroy{
   id!:string;
-  allCars:CarAllInfo[]=[]; 
+  allCars$!:Observable<CarAllInfo[]>; 
+  currentCar$!:Observable<CarAllInfo>; 
   currentCar!:CarAllInfo;  
+  currentCarSub!:Subscription; 
   numberDays:number=1; 
-  priceDay!:number; 
-  priceAllDays!:number;  
+  priceDay:number=0; 
+  priceAllDays:number=0;  
+  totalPrice:number=0; 
   negotiable:boolean=false; 
-  totalPrice!:number; 
   //Date format
   startDate!:any;  
   endDate!:any; 
@@ -34,27 +37,26 @@ export class ReservationComponent implements OnInit{
   initial:any; 
   startTime!:string;
   endTime!:string;  
-  
-  name!:string;
-  email!:string; 
-  phone!:string; 
-  message!:string;
+
+  // name!:string;
+  // email!:string; 
+  // phone!:string; 
+  // message!:string;
+
   assurance: boolean = false;
-  date:string = '12-10-2024'
+
   
   constructor(private route:ActivatedRoute, 
     private titleService:Title, 
-    private router: Router
-    //,private contentful:ContentfulService
-    ){
-  }
+    private router: Router,
+    private contentful:ContentfulService){ }
+
   ngOnInit(): void {
     this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
 
     
-    this.allCars = carsAllInfo;
-    this.currentCar = getCarById(this.id);
+    
     this.setTheCar(); 
     this.setTheDate();
     
@@ -63,12 +65,9 @@ export class ReservationComponent implements OnInit{
   
   
   setTheCar():void{
-    // this.currentCar = this.contentful.getCarById(this.id);
-    // this.allCars = this.contentful.getAllInfo();
-    
-    this.priceDay=this.currentCar.price[0].dayOneThree;
-    this.priceAllDays = this.numberDays * this.priceDay;
-    this.totalPrice = this.priceAllDays;
+    this.allCars$ = this.contentful.carsAllInfo$;
+    this.currentCar$ = this.contentful.getCarById(this.id); 
+    this.currentCarSub = this.currentCar$.subscribe(value => this.currentCar = value);
   }
 
   setTheDate(){
@@ -80,9 +79,13 @@ export class ReservationComponent implements OnInit{
   }
 
   carSelect(id:string){
-    //this.currentCar = this.contentful.getCarById(id);
-    this.currentCar = getCarById(id);
-    this.updatePrices(); 
+    // this.currentCarSub.unsubscribe();
+    // this.currentCarSub = 
+    this.contentful.getCarById(id).subscribe(value => {
+      this.currentCar = value; 
+      this.updatePrices();
+    });
+     
   }
 
   firstDate(pickup:string):void{
@@ -144,7 +147,10 @@ export class ReservationComponent implements OnInit{
           alert("Eroare! Va rugam sa reincercati!")
         },
       );
-    
+  }
+  
+  ngOnDestroy(): void {
+    this.currentCarSub.unsubscribe();
   }
 }
 

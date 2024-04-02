@@ -1,8 +1,8 @@
-<div class="container reservation-page">
+<div class="container reservation-page" *ngIf="currentCar">
     <h1 class="title">Rezervare mașină</h1>
     <div class="reservation-info">
         <p>Pentru rezervări, vă rugăm să sunați la numărul de telefon <a href="tel://+40 (766) 540 549">0755 934 953</a>, sau să completați formularul de mai jos. </p>
-        <p>Câmpurile marcate cu <strong><span>*</span> trebuie </strong>completate inainte să puteți trimite rezervarea.</p> 
+        <p>Câmpurile marcate cu <strong><span>*</span> trebuie </strong>completate pentru a putea trimite rezervarea.</p> 
     </div>
     <form #form #reservationForm="ngForm" (ngSubmit)="sendEmail($event)" >       
         <div class="reservation centered"> 
@@ -14,7 +14,7 @@
                 required
                 [class.is-invalid]="tempCar.invalid && tempCar.touched">
                     <option value="">Selectați mașina*</option>
-                    <option *ngFor="let eachCar of allCars" [value]="eachCar.id">{{eachCar.name}}</option>
+                    <option *ngFor="let eachCar of allCars$ | async" [value]="eachCar.id">{{eachCar.name}}</option>
                 </select>
                 <p class="reservation-price"><span>{{numberDays}} zile x {{priceDay}}€/zi</span><span class="price-all-days">{{priceAllDays}}€</span></p>
 
@@ -41,24 +41,24 @@
                 <h2>Date personale</h2>
                 <label for="name">Nume <span>*</span></label>
                 <input type="text" name="name" id="name" placeholder="Nume si prenume" 
-                    [(ngModel)]="name" #tempName="ngModel"
+                    #tempName="ngModel" ngModel
                     required
                     [class.is-invalid]="tempName.invalid && tempName.touched"> <br>
                 <small *ngIf="tempName.invalid && tempName.touched">Vă rugăm să introduceți numele d-voastră</small>
                 <label for="email">Email <span>*</span></label>
                 <input type="email" name="email" placeholder="Adresa email"  id="email" 
-                    [(ngModel)]="email" #tempEmail="ngModel"
+                    #tempEmail="ngModel" ngModel
                     required pattern="[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}"
                     [class.is-invalid]="tempEmail.invalid && tempEmail.touched">  <br>
                 <small *ngIf="tempEmail.invalid && tempEmail.touched">Vă rugăm să introduceți o adresă de email validă</small>
                 <label for="tel">Nr telefon <span>*</span></label>
                 <input type="tel" name="tel" placeholder="Numar de telefon"  id="tel"  
-                    [(ngModel)]="phone" #tempPhone="ngModel"
+                    #tempPhone="ngModel" ngModel
                     required
                     [class.is-invalid]="tempPhone.invalid && tempPhone.touched"> <br>
                     <small *ngIf="tempPhone.invalid && tempPhone.touched">Vă rugăm să introduceți numărul de telefon</small>
                 <label for="message">Mesaj</label>
-                <textarea name="message" placeholder="Informatii suplimentare" id="message" cols="30" rows="7" [(ngModel)]="message"></textarea>
+                <textarea name="message" placeholder="Informatii suplimentare" id="message" cols="30" rows="7" ngModel></textarea>
                 
             </div>
         </div>
