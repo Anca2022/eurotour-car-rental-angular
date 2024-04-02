@@ -43,4 +43,4 @@ export interface CarAllInfo{
 
 export interface CarsInCategory extends CarTypes{
     carsInCategory: Car[]
-}
+} 

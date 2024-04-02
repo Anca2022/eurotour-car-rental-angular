@@ -1,11 +1,10 @@
-import { AfterViewChecked, AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule} from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { ContentfulService } from '../../services/contentful.service';
 import { FormsModule } from '@angular/forms';
-//import { carsAllInfo, getCarById } from '../../fake-data';
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 import { Observable, Subscription } from 'rxjs';
 
@@ -19,7 +18,6 @@ import { Observable, Subscription } from 'rxjs';
 export class ReservationComponent implements OnInit, OnDestroy{
   id!:string;
   allCars$!:Observable<CarAllInfo[]>; 
-  currentCar$!:Observable<CarAllInfo>; 
   currentCar!:CarAllInfo;  
   currentCarSub!:Subscription; 
   numberDays:number=1; 
@@ -34,43 +32,31 @@ export class ReservationComponent implements OnInit, OnDestroy{
   pickupDate!:any;
   dropoffDate!:any;
   today = new Date();
-  initial:any; 
   startTime!:string;
   endTime!:string;  
-
-  // name!:string;
-  // email!:string; 
-  // phone!:string; 
-  // message!:string;
-
   assurance: boolean = false;
 
   
   constructor(private route:ActivatedRoute, 
     private titleService:Title, 
     private router: Router,
-    private contentful:ContentfulService){ }
+    private contentful:ContentfulService
+    ){ }
 
   ngOnInit(): void {
     this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
-
-    
     
     this.setTheCar(); 
     this.setTheDate();
-    
   }
 
-  
-  
   setTheCar():void{
     this.allCars$ = this.contentful.carsAllInfo$;
-    this.currentCar$ = this.contentful.getCarById(this.id); 
-    this.currentCarSub = this.currentCar$.subscribe(value => this.currentCar = value);
+    this.currentCarSub = this.contentful.getCarById(this.id).subscribe(value => this.currentCar = value);
   }
 
-  setTheDate(){
+  setTheDate():void{
     this.startDate = new Date (this.today); 
     this.endDate = new Date(this.today); 
     this.endDate.setDate(this.today.getDate() + 1);
@@ -78,14 +64,11 @@ export class ReservationComponent implements OnInit, OnDestroy{
     this.dropoffDate = this.endDate.toISOString().split('T')[0];
   }
 
-  carSelect(id:string){
-    // this.currentCarSub.unsubscribe();
-    // this.currentCarSub = 
+  carSelect(id:string):void{
     this.contentful.getCarById(id).subscribe(value => {
       this.currentCar = value; 
       this.updatePrices();
     });
-     
   }
 
   firstDate(pickup:string):void{
@@ -99,14 +82,15 @@ export class ReservationComponent implements OnInit, OnDestroy{
     this.updatePrices();
   }
 
-  firstTime(time:string){
+  firstTime(time:string):void{
     this.startTime = time;
     this.calculateDays();
   }
-  lastTime(time:string){
+  lastTime(time:string):void{
     this.endTime = time;
     this.calculateDays();
   }
+
   calculateDays():void{
     let time = this.endDate - this.startDate; 
     this.numberDays = Math.ceil(time / (1000 * 60 * 60 * 24)); 
@@ -115,12 +99,13 @@ export class ReservationComponent implements OnInit, OnDestroy{
     this.updatePrices();
   }
 
-  updatePrices(){
+  updatePrices():void{
     if(this.numberDays < 4) this.priceDay = this.currentCar.price[0].dayOneThree
     else if (this.numberDays < 8) this.priceDay = this.currentCar.price[1].dayFourSeven
     else if (this.numberDays > 8) this.priceDay = this.currentCar.price[2].dayEightTwentyOne; 
 
-    if(this.numberDays > 21) this.negotiable=true;  
+    if(this.numberDays > 21) this.negotiable=true
+    else this.negotiable=false;  
 
     this.priceAllDays = this.priceDay*this.numberDays; 
     this.updateTotal();
@@ -132,7 +117,7 @@ export class ReservationComponent implements OnInit, OnDestroy{
       this.totalPrice = this.priceAllDays + this.currentCar.assurance
   }
   
-  public sendEmail(e: Event) {
+  public sendEmail(e: Event):void {
     emailjs
       .sendForm('service_skr3des', 'template_ee1egdb', e.target as HTMLFormElement, {
         publicKey: '03NYWpwwA_dm4-h_-',

@@ -2,7 +2,7 @@
     <h1 class="title">Rezervare mașină</h1>
     <div class="reservation-info">
         <p>Pentru rezervări, vă rugăm să sunați la numărul de telefon <a href="tel://+40 (766) 540 549">0755 934 953</a>, sau să completați formularul de mai jos. </p>
-        <p>Câmpurile marcate cu <strong><span>*</span> trebuie </strong>completate pentru a putea trimite rezervarea.</p> 
+        <p>Câmpurile marcate cu asterisc (*) <strong> trebuie </strong>completate pentru a putea trimite rezervarea.</p> 
     </div>
     <form #form #reservationForm="ngForm" (ngSubmit)="sendEmail($event)" >       
         <div class="reservation centered"> 
@@ -10,10 +10,9 @@
                 <h2>Selectează mașina</h2>
                 <small style="text-align: left; margin-top:5px;" *ngIf="tempCar.invalid && tempCar.touched">Vă rugăm să selectati masina dorita</small>
                 <select name="selected-car" #selectedCar (change)="carSelect(selectedCar.value)" 
-                #tempCar="ngModel" ngModel
+                #tempCar="ngModel" [ngModel]="currentCar.id"
                 required
                 [class.is-invalid]="tempCar.invalid && tempCar.touched">
-                    <option value="">Selectați mașina*</option>
                     <option *ngFor="let eachCar of allCars$ | async" [value]="eachCar.id">{{eachCar.name}}</option>
                 </select>
                 <p class="reservation-price"><span>{{numberDays}} zile x {{priceDay}}€/zi</span><span class="price-all-days">{{priceAllDays}}€</span></p>
@@ -84,5 +83,3 @@
         <input type="submit" value="Trimite Rezervarea" class="submit-btn" [disabled]="reservationForm.invalid">
     </form>
 </div>
-   
-

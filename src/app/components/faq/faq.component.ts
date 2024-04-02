@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { ContentfulService } from '../../services/contentful.service';
 import { Observable } from 'rxjs';
+import { FAQ } from '../../types';
 
 @Component({
   selector: 'app-faq',
@@ -13,7 +14,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./faq.component.scss', '../conditions/conditions.component.scss']
 })
 export class FaqComponent implements OnInit{
-  questions$!:Observable<any>;
+  questions$!:Observable<FAQ[]>;
 
   constructor(private titleService:Title, 
       private contentful: ContentfulService){}

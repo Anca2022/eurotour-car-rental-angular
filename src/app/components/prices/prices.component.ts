@@ -20,7 +20,8 @@ export class PricesComponent implements OnInit{
   carCategories$!:Observable<CarsInCategory[]>; 
   
   constructor(private titleService: Title,
-    private contentful:ContentfulService){}
+    private contentful:ContentfulService
+    ){}
   ngOnInit(): void {
     this.titleService.setTitle('Tarife | Eurotour - Inchirieri masini Cluj-Napoca')
 
@@ -31,5 +32,4 @@ export class PricesComponent implements OnInit{
     if (this.display[index] === true) this.display[index]=false
     else this.display[index] = true;
   }
-
 }

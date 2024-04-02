@@ -17,9 +17,9 @@ export class SingleCarPageComponent implements OnInit {
   id!:string; 
   car$!:Observable<CarAllInfo>;  
   constructor(private route:ActivatedRoute,
-     private titleService:Title,
+    private titleService:Title,
     private contentful:ContentfulService
-     ){}
+    ){}
   ngOnInit(): void {
     this.titleService.setTitle('Detalii Masina | Eurotour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe((param)=> this.id = param['id']);
