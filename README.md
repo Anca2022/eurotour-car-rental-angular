@@ -1,5 +1,5 @@
 # Euro Tour Car Rental Website - Angular
-This repository contains the code for the Euro Tour Car Rental website, built using the Angular framework (version 17.0.3) and integrated with Contentful CMS for backend management.
+This repository contains the code for the Euro Tour Car Rental website. It has been built using the Angular framework (version 17.0.3) and integrates Contentful CMS for backend management alongside EmailJS for transmitting form data to email addresses.
 
 ## Project overview
 This project aims to provide a user-friendly platform for a car rental firm based in Cluj-Napoca. The website is designed to showcase the available car fleet, allow users to check specifications, view rental prices based on time intervals, and submit rental requests.
@@ -18,11 +18,13 @@ For a sneak peek at the Euro Tour Car Rental website, here are some printscreens
 
 ![Screenshot 2024-03-14 150958](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/c37aa9d1-ccf3-4098-b8a1-b4178d8d6df4)
 
+![image](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/d3f6c3c7-2e8f-45eb-bbc8-84b306601d55)
 
 
 ## Technologies Used
 Angular Framework </br>
-Contentful CMS
+Contentful CMS <br>
+EmailJS
 
 ## How to Run
 1. Clone this repository.
