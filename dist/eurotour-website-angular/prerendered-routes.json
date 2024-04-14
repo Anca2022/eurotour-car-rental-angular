@@ -1,0 +1,10 @@
+{
+  "routes": [
+    "/home",
+    "/intrebari-frecvente",
+    "/politica-confidentialitate",
+    "/succes",
+    "/tarife",
+    "/termeni-si-conditii"
+  ]
+}

@@ -1,0 +1,19 @@
+.to-top{
+    position:fixed; 
+    z-index:4;
+    bottom: 1rem;
+    right: 1rem;
+    font-size:2rem;
+    color:var(--accent2);
+    background-color: white;
+    border-radius:50%;
+    cursor: pointer;
+}
+
+@media (min-width:1024px){
+    .to-top{
+        bottom: 1.5rem;
+        right: 2rem;
+        font-size:2.3rem;
+    }
+}
