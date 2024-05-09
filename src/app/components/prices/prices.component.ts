@@ -32,4 +32,7 @@ export class PricesComponent implements OnInit{
     if (this.display[index] === true) this.display[index]=false
     else this.display[index] = true;
   }
+  toggleBonus(bonus:Element){
+    bonus.classList.toggle('display-bonus');
+  }
 }

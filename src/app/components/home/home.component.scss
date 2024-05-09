@@ -6,7 +6,7 @@
     background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: multiply;
     color:white;
-    padding: 5rem 0 4rem 0;
+    padding: 5rem 0.5rem 4rem 0;
     h1, p{ 
         transform: scaleX(-1);
     }
@@ -17,15 +17,14 @@
     }
     p{
         padding-bottom: 1rem;
-        margin-right:0.5rem;
         font-size: 1.2rem;
     }
 }
 
 .fleet{
+    padding:0 0.5rem;
     .title{
         padding: 6rem 0 3rem 0;
-        line-height: 28px;
     }
     .cars{
         display: flex;
@@ -34,46 +33,50 @@
         padding-top:3rem;
         padding-bottom:4rem;    
         .car{
-            padding: 10px 0 0 5px;
-            width:290px;
-            box-shadow: 2px 2px 7px lightgray;
-            border-radius:5px;
-            margin:0 auto 3rem auto;
+            width:310px;
+            border: 1px solid var(--color20);
+            border-radius:10px;
+            box-shadow: 0px 0px 10px var(--color20);
+            margin:0 auto 2rem auto;
+            padding: 10px;
+            background-color:white;
             position:relative;
+            font-size: 16px;
             .photo{
-                width:290px;
-                height:230px;
-                margin-top:1.5rem;
-                margin-left:-5px;
-                overflow: hidden;
+                width:100%;
+                aspect-ratio: 1.25/1; 
                 img{
                     width:100%;
+                    border-radius: 10px;
                 }
             } 
+            .car-category{
+                font-size: 14px;
+                margin-top: 10px;
+                color: var(--color80);
+            }
             .car-title{
-                font-family: 'Merriweather Sans', sans-serif;
-                font-size:1.5rem;
-                font-weight:bold;
-                color:var(--dark);
-                margin: 20px 0 40px 0;
-                text-align:center;
+                font-family: 'Lexend', sans-serif;
+                font-size:20px;
+                font-weight:500;
+                margin-top: 6px;
             }
             .car-details{
+                margin-bottom:22px;
+                color:var(--color80);
                 li{
-                    padding: 0 0 5px 10px;
-                    h3 {
-                        display: inline-block;
-                        font-size: 1.05rem;
-                        font-weight:500;
-                        width:150px;
-                    }
+                   margin-top: 5px;
                 }
             }
             .car-buttons{
                 display: flex;
+                flex-direction: row;
                 justify-content: space-between;
-                margin: 2rem 0.5rem;
-                button{cursor: pointer;}
+                .clear-btn{
+                    background-color: white;
+                    color:var(--color);
+                    border: 1.4px solid var(--color50);
+                }
             }
         }
     }
@@ -91,25 +94,11 @@
         }
     }
     .fleet{
+        padding:0;
         .cars{
             .car{
                 margin-bottom:2rem;
-                padding-left: 1rem;
                 width:330px;
-                .photo{
-                    width:330px;
-                    margin-left:-1rem;
-                }
-                .car-details{
-                    li{
-                        h3{
-                            width:170px;
-                        }
-                    }
-                }
-                .car-buttons {
-                   margin-right: 1.5rem;
-                }
             }
         }
     }
@@ -124,7 +113,4 @@
             margin-left: 500px;
         }
     }
-    .fleet > .cars > .car > .car-buttons{
-        margin-right: 1.7rem;
-     }
 }

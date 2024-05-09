@@ -1,0 +1,4 @@
+let i = 10;
+let j = i+; 
+console.log("i: " + i );
+console.log("j: " + j );

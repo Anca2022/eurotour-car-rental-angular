@@ -1,0 +1,5 @@
+let myName = "anca"; 
+var mySecondName = 'ba nu'; 
+var mySecondName = 'ba da';
+
+console.log(mySecondName);

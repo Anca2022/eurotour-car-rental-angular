@@ -1,0 +1,8 @@
+var mySecondName = 'ba nu'; 
+function razgandire(){
+    mySecondName = 'ba da';
+    console.log(mySecondName); 
+}
+
+razgandire();
+console.log(mySecondName);

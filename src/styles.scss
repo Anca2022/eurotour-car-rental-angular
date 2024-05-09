@@ -1,11 +1,15 @@
 :root {
-    --dark:#1a2e35; 
-    --dark-footer:rgb(40, 118, 118);
-    --light: #99e9e9; 
-    --accent1:  #fc9251;
-    --accent1-dark: #f9843a;
-    --accent2: #1cbbb4 ;
-    --bg:#d1efea;
+    --primary: #F0712C;
+    --primary-hover: #f0651a;
+    --footer-bg: #242223; 
+    --footer-color:#F5F1E8;
+    --bg: #F9FAFA;
+    --color:#242223;
+    --color50: rgba(36, 34, 35, 0.5); 
+    --color20: rgba(36, 34, 35, 0.2); 
+    --color05: rgba(36, 34, 35, 0.05); 
+    --color80: rgba(36, 34, 35, 0.8); 
+    --reservation: rgba(36, 34, 35, 0.1);
 }
 *, *::before, *::after{
     box-sizing: border-box;
@@ -19,26 +23,32 @@ body{
     min-height:100%;
     font-family: 'Roboto', sans-serif;
     position:relative;
+    background-color: var(--bg);
+    color: var(--color);
 }
 ul{
     list-style-type: none;
 }
 a{
     text-decoration: none;
+    color:inherit;
 }
 
-button{
-    background-color: var(--accent1-dark);
-    box-shadow: 1px 1px 4px #c8c6c1;
-    padding:0.7rem 1.8rem;
-    border-radius: 3px;
-    width:120px;
+.button{
+    background-color: var(--primary);
+    color: white;
+    width:140px;
+    border-radius: 5px;
     border:none;
-    font-size:1.1rem;
-    font-weight:bold;
+    outline:none;
+    padding: 0.5rem 0; 
+    font-size:16px;
+    font-weight:600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
     &:hover{
-        background-color: var(--accent1);
-        box-shadow: 2px 1px 5px #c2b49e;
+        background-color: var(--primary-hover);
+        box-shadow: 1px 1px 5px var(--color20);
     }
 }
 
@@ -47,8 +57,9 @@ button{
     margin:0 auto;  
 }
 .title{
-    font-size:1.9rem;
+    font-family: 'Lexend', sans-serif;
     font-weight: 500;
+    font-size:1.9rem;
     text-align:center;
     padding-bottom: 3rem;
 }
@@ -56,7 +67,8 @@ button{
     margin: 0 auto;
 }
 .promo{
-    background-color: orangered;
+    background-color: var(--primary-hover);
+    color: var(--bg);
     position:absolute;
     height: 75px;
     width: 75px;

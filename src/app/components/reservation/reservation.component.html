@@ -68,7 +68,9 @@
             <div>Garanție <span>{{currentCar.warranty}}€</span></div>
             <div class="show-scdw">
                 <input type="checkbox" name="assurance" id="assurance" [(ngModel)]="assurance" (change)="updatePrices()">  
-                <label for="assurance" title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">asigurare facultativă <i class="fa-solid fa-circle-info"></i></label>
+                <!-- <label for="assurance" title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">asigurare facultativă <i class="fa-solid fa-circle-info"></i></label> -->
+                <label for="assurance"> asigurare facultativă <i class="fa-solid fa-circle-info" (mouseover)="toggleBonus(bonus)" (mouseout)="toggleBonus(bonus)" (click)="toggleBonus(bonus)"></i></label>
+                <div class="bonus" #bonus>Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.</div>
                 <span>{{currentCar.assurance}}€</span> 
             </div>
             <div class="total-price"> PREȚ TOTAL <span>{{totalPrice}}€</span></div>
@@ -80,6 +82,6 @@
             <label for="accord">Sunt de acord cu <a routerLink="/termeni-si-conditii">Termenii și Condițiile</a>*</label>
             <small style="text-align: left;" *ngIf="reservationForm.invalid && tempAccord.invalid && tempAccord.touched">Pentru a face rezervarea trebuie să acceptați Termenii și Condițiile</small>
         </div>
-        <input type="submit" value="Trimite Rezervarea" class="submit-btn" [disabled]="reservationForm.invalid">
+        <input type="submit" value="Trimite Rezervarea" class="button submit-btn" [disabled]="reservationForm.invalid">
     </form>
 </div>

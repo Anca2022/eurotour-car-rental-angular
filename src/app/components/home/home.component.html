@@ -12,24 +12,19 @@
     <div class="cars" *ngIf="cars$ | async as cars; else eroare">
         <div class="car" *ngFor="let car of cars">
             <div class="promo" *ngIf="car.promo">de la 
-            <span>{{car.price[2].dayEightTwentyOne | currency: 'EUR' : 'symbol' : '2.0-0'}}</span> 
-            <br/>/zi
+                <span>{{car.price[2].dayEightTwentyOne | currency: 'EUR' : 'symbol' : '2.0-0'}}</span> 
+                <br/>/zi
             </div>
             <div class="photo"><img [src]="car.img" [alt]="car.name"></div>
+            <p class="car-category">{{car.carType | titlecase}}</p>
             <p class="car-title">{{car.name}}</p>
             <ul class="car-details">
-                <li class="engines">
-                    <h3>Combustibil</h3>
-                    <span>{{car.specs[0].fuel | titlecase}}</span>
-                </li>
-                <li class="gearbox">
-                    <h3>Transmisie</h3>
-                    <span>{{car.specs[1].gear | titlecase}}</span>
-                </li>
+                <li>{{car.specs[0].fuel | titlecase}}</li>
+                <li>Transmisie {{car.specs[1].gear | titlecase}}</li>
             </ul>
             <div class="car-buttons">
-                <button type="button" routerLink="/masina/{{car.id}}">Detalii</button>
-                <button type="button" routerLink="/rezervari/{{car.id}}">Rezervă</button>
+                <button type="button" class="button" routerLink="/rezervari/{{car.id}}">Rezervă</button>
+                <button type="button" class="button clear-btn" routerLink="/masina/{{car.id}}">Detalii</button>
             </div>
         </div>
     </div>

@@ -15,7 +15,9 @@
                 <span>4-7 zile</span>
                 <span>8-21 zile</span>
                 <span>Garanție</span>
-                <span title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">SCDW/zi <i class="fa-solid fa-circle-info"></i></span>
+                <!-- <span title="Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.">SCDW/zi <i class="fa-solid fa-circle-info"></i></span> -->
+                <span>SCDW/zi <i class="fa-solid fa-circle-info" (mouseover)="toggleBonus(bonus)" (mouseout)="toggleBonus(bonus)" (click)="toggleBonus(bonus)"></i></span>
+                <div class="bonus" #bonus>Asigurarea SCDW BONUS vă acoperă în caz de accidente, inclusiv din cauza dumneavoastră, prin reducerea responsabilității financiare maxime în caz de daună sau furt, caz în care nu mai e necesară plata garanției.</div>
                 <span></span>
             </div>
             <div class="row" *ngFor="let cat of carCat; let i=index">
@@ -32,7 +34,7 @@
                     <span>{{cat.price[2].dayEightTwentyOne| currency:'EUR': 'symbol' : '2.0-0'}}</span>
                     <span>{{cat.warranty | currency:'EUR': 'symbol' : '2.0-0'}}</span>
                     <span>{{cat.assurance | currency:'EUR': 'symbol' : '2.0-0'}}</span>
-                    <span><button class="reserve-btn" type="button" routerLink="/rezervari/{{cat.carsInCategory[0].id}}">Rezervă</button></span>
+                    <span><button class="button reserve-btn" type="button" routerLink="/rezervari/{{cat.carsInCategory[0].id}}">Rezervă</button></span>
             </div>     
         </div>
     </div>

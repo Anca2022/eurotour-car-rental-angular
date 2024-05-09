@@ -2,11 +2,13 @@
     .question-unit{
         margin-bottom: 10px;
         .question{
+            border-radius: 10px;
             padding: 1rem 1.4rem 1rem 0.5rem;
-            background-color: var(--accent2);
-            color: white;
+            background-color: var(--color05);
+            color: var(--color);
             font-weight: 500;
             position: relative;
+            cursor:pointer;
         }
         .question:before{
             content:"+";

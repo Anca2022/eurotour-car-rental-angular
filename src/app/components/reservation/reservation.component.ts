@@ -37,6 +37,7 @@ export class ReservationComponent implements OnInit, OnDestroy{
   assurance: boolean = false;
 
   
+  
   constructor(private route:ActivatedRoute, 
     private titleService:Title, 
     private router: Router,
@@ -134,6 +135,10 @@ export class ReservationComponent implements OnInit, OnDestroy{
       );
   }
   
+  toggleBonus(bonus:Element){
+    bonus.classList.toggle('display-bonus');
+  }
+
   ngOnDestroy(): void {
     this.currentCarSub.unsubscribe();
   }

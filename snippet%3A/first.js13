@@ -1,0 +1,7 @@
+let i = 10;
+let j=0;
+j = i++; 
+console.log("i: " + i );
+console.log("j: " + j );
+
+console.log(typeof NaN);

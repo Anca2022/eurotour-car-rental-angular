@@ -2,7 +2,7 @@
     padding: 4rem 0.5rem 0 0.5rem;
     height:75vh;
     p{ 
-        font-size:1.3rem;
+        font-size:18px;
         text-align: center; 
     }
 }
@@ -16,12 +16,3 @@
         }
     }
 }
-
-@media (min-width:1024px){
-    .succes {
-        p{ 
-            font-size:1.35rem; 
-        }
-    }
-}
-
