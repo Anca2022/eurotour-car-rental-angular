@@ -55,6 +55,7 @@ a{
 .container{ 
     max-width: 1000px;
     margin:0 auto;  
+    animation: transitionIn 0.4s;
 }
 .title{
     font-family: 'Lexend', sans-serif;
@@ -100,5 +101,18 @@ a{
 @media (min-width:1440px){
     .container{
         max-width:1300px;
+    }
+}
+
+
+@keyframes transitionIn{
+    from {
+        opacity: 0;
+        transform: rotateY(10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateY(0);
     }
 }
