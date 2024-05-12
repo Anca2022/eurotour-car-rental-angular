@@ -11,7 +11,7 @@ import { Title } from '@angular/platform-browser';
 export class SuccesComponent implements OnInit{
   constructor(private titleService:Title){}
   ngOnInit(): void {
-    this.titleService.setTitle('Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Euro Tour - Inchirieri masini Cluj-Napoca')
   }
 
 }

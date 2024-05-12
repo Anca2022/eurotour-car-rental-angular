@@ -35,8 +35,6 @@ export class ReservationComponent implements OnInit, OnDestroy{
   startTime!:string;
   endTime!:string;  
   assurance: boolean = false;
-
-  
   
   constructor(private route:ActivatedRoute, 
     private titleService:Title, 
@@ -45,7 +43,7 @@ export class ReservationComponent implements OnInit, OnDestroy{
     ){ }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Rezervari | Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Rezervari | Euro Tour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
     
     this.setTheCar(); 
@@ -115,7 +113,7 @@ export class ReservationComponent implements OnInit, OnDestroy{
   updateTotal():void{
     this.totalPrice = this.priceAllDays;
     if (this.assurance)    
-      this.totalPrice = this.priceAllDays + this.currentCar.assurance
+      this.totalPrice = this.priceAllDays + this.currentCar.assurance * this.numberDays;
   }
   
   public sendEmail(e: Event):void {

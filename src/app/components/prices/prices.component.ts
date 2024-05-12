@@ -23,7 +23,7 @@ export class PricesComponent implements OnInit{
     private contentful:ContentfulService
     ){}
   ngOnInit(): void {
-    this.titleService.setTitle('Tarife | Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Tarife | Euro Tour - Inchirieri masini Cluj-Napoca')
 
     this.carCategories$ = this.contentful.carCategoryExtra$;
   }

@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 export class GdprComponent implements OnInit {
   constructor(private titleService:Title){}  
   ngOnInit(): void {
-    this.titleService.setTitle('Politica de confidentialitate| Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Politica de confidentialitate| Euro Tour - Inchirieri masini Cluj-Napoca')
   }
 
 }

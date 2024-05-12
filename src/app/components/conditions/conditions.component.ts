@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 export class ConditionsComponent implements OnInit{
   constructor( private titleService: Title){}
   ngOnInit(): void {
-    this.titleService.setTitle('Termeni si Conditii | Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Termeni si Conditii | Euro Tour - Inchirieri masini Cluj-Napoca')
   }
 
 }

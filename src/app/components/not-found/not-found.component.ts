@@ -15,7 +15,7 @@ export class NotFoundComponent implements OnInit{
  
   constructor(private titleService:Title){}
   ngOnInit(): void {
-    this.titleService.setTitle('Eroare| Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Eroare| Euro Tour - Inchirieri masini Cluj-Napoca')
   }
 
 }

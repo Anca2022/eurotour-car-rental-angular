@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit{
 
  constructor(private titleService:Title, private contentful:ContentfulService){}
  ngOnInit(): void {
-    this.titleService.setTitle('Eurotour - Inchirieri masini Cluj-Napoca');
+    this.titleService.setTitle('Euro Tour - Inchirieri masini Cluj-Napoca');
     this.cars$ = this.contentful.carsAllInfo$;
  }
 }

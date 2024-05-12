@@ -21,7 +21,7 @@ export class SingleCarPageComponent implements OnInit {
     private contentful:ContentfulService
     ){}
   ngOnInit(): void {
-    this.titleService.setTitle('Detalii Masina | Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Detalii Masina | Euro Tour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe((param)=> this.id = param['id']);
     this.car$ = this.contentful.getCarById(this.id);
   }

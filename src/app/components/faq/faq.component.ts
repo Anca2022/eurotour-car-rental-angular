@@ -19,7 +19,7 @@ export class FaqComponent implements OnInit{
   constructor(private titleService:Title, 
       private contentful: ContentfulService){}
   ngOnInit(): void {
-    this.titleService.setTitle('Intrebari Frecvente | Eurotour - Inchirieri masini Cluj-Napoca')
+    this.titleService.setTitle('Intrebari Frecvente | Euro Tour - Inchirieri masini Cluj-Napoca')
     this.questions$ = this.contentful.questions$;  
   }
   
