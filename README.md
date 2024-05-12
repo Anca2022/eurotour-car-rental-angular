@@ -12,17 +12,20 @@ This project aims to provide a user-friendly platform for a car rental firm base
 
 ## Preview
 For a sneak peek at the Euro Tour Car Rental website, here are some printscreens of the page:
-![Screenshot 2024-03-14 150721](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/1f585242-ba89-45be-9f69-91c2d0c649c7)
+![image](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/07b352f4-a446-4c0f-aaa1-447625045666)
 
-![Screenshot 2024-03-14 150754](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/aa7e0dd4-a2fe-45b7-870d-0460d9c64ef0)
 
-![Screenshot 2024-03-14 150958](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/c37aa9d1-ccf3-4098-b8a1-b4178d8d6df4)
+![image](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/34c51e68-c4e1-4444-a1dd-36b97d2da01d)
+
+
+![image](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/24465884-77a6-48b0-8bf5-1ff1e532e11e)
+
 
 ![image](https://github.com/Anca2022/Eurotour-car-rental-angular/assets/98110730/d3f6c3c7-2e8f-45eb-bbc8-84b306601d55)
 
 
 ## Technologies Used
-Angular Framework </br>
+Angular Framework (version 17.0.3)</br>
 Contentful CMS <br>
 EmailJS
 
