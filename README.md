@@ -26,6 +26,7 @@ For a sneak peek at the Euro Tour Car Rental website, here are some printscreens
 
 ## Technologies Used
 Angular Framework (version 17.0.3)</br>
+RxJS - Observables </br>
 Contentful CMS <br>
 EmailJS
 
