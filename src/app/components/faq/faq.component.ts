@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Title } from '@angular/platform-browser';
 import { ContentfulService } from '../../services/contentful.service';
 import { Observable } from 'rxjs';
 import { FAQ } from '../../types';
@@ -16,10 +15,8 @@ import { FAQ } from '../../types';
 export class FaqComponent implements OnInit{
   questions$!:Observable<FAQ[]>;
 
-  constructor(private titleService:Title, 
-      private contentful: ContentfulService){}
+  constructor(private contentful: ContentfulService){}
   ngOnInit(): void {
-    this.titleService.setTitle('Intrebari Frecvente | Euro Tour - Inchirieri masini Cluj-Napoca')
     this.questions$ = this.contentful.questions$;  
   }
   

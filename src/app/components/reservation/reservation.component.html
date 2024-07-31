@@ -15,7 +15,7 @@
                 [class.is-invalid]="tempCar.invalid && tempCar.touched">
                     <option *ngFor="let eachCar of allCars$ | async" [value]="eachCar.id">{{eachCar.name}}</option>
                 </select>
-                <p class="reservation-price"><span>{{numberDays}} zile x {{priceDay}}€/zi</span><span class="price-all-days">{{priceAllDays}}€</span></p>
+                <p class="reservation-price" ><span>{{numberDays}} zile x {{priceDay}}€/zi</span><span class="price-all-days">{{priceAllDays}}€</span></p>
 
                 <div class="reservation-img">
                     <img [src]="currentCar.img" [alt]="currentCar.name"> 

@@ -53,6 +53,15 @@
     background-color:transparent; 
     color:transparent;
     cursor:default;
+    user-select: none;
+    a{
+        cursor:default;
+        color:transparent; 
+        &:hover{
+            color:transparent;
+        }
+    } 
+
 }
 @media (min-width:760px){
     .footer-container{

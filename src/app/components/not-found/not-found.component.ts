@@ -1,5 +1,4 @@
-import { Component, OnInit} from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component} from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -11,12 +10,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './not-found.component.html',
   styleUrl: '../succes/succes.component.scss'
 })
-export class NotFoundComponent implements OnInit{
- 
-  constructor(private titleService:Title){}
-  ngOnInit(): void {
-    this.titleService.setTitle('Eroare| Euro Tour - Inchirieri masini Cluj-Napoca')
-  }
-
+export class NotFoundComponent {
 }
 

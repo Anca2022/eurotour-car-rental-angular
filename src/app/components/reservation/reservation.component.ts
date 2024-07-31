@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CarAllInfo } from '../../types';
 import { CommonModule} from '@angular/common';
-import { Title } from '@angular/platform-browser';
 import { ContentfulService } from '../../services/contentful.service';
 import { FormsModule } from '@angular/forms';
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
@@ -37,13 +36,11 @@ export class ReservationComponent implements OnInit, OnDestroy{
   assurance: boolean = false;
   
   constructor(private route:ActivatedRoute, 
-    private titleService:Title, 
     private router: Router,
     private contentful:ContentfulService
     ){ }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Rezervari | Euro Tour - Inchirieri masini Cluj-Napoca')
     this.route.params.subscribe(param => this.id = param['id']); 
     
     this.setTheCar(); 
@@ -52,7 +49,10 @@ export class ReservationComponent implements OnInit, OnDestroy{
 
   setTheCar():void{
     this.allCars$ = this.contentful.carsAllInfo$;
-    this.currentCarSub = this.contentful.getCarById(this.id).subscribe(value => this.currentCar = value);
+    this.currentCarSub = this.contentful.getCarById(this.id).subscribe(value => {
+      this.currentCar = value;
+      this.updatePrices();
+    });
   }
 
   setTheDate():void{

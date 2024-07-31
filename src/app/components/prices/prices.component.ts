@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Title } from '@angular/platform-browser';
 import { ContentfulService } from '../../services/contentful.service';
 import { Observable } from 'rxjs';
 import { CarsInCategory } from '../../types';
@@ -19,12 +18,8 @@ export class PricesComponent implements OnInit{
   display:boolean[]=[]; 
   carCategories$!:Observable<CarsInCategory[]>; 
   
-  constructor(private titleService: Title,
-    private contentful:ContentfulService
-    ){}
+  constructor(private contentful:ContentfulService){}
   ngOnInit(): void {
-    this.titleService.setTitle('Tarife | Euro Tour - Inchirieri masini Cluj-Napoca')
-
     this.carCategories$ = this.contentful.carCategoryExtra$;
   }
 
