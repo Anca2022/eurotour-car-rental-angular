@@ -5,7 +5,6 @@ import { ContentfulService } from '../../services/contentful.service';
 import { Observable } from 'rxjs';
 import { CarsInCategory } from '../../types';
 
-
 @Component({
   selector: 'app-prices',
   standalone: true,
