@@ -1,8 +1,0 @@
-console.log('hello from snippets');
-let i = 'a random string'
-console.log(i);
-let j; 
-let k = undefined; 
-console.log("j: " + j); 
-console.log("k: " + k);
-console.log(typeof k);

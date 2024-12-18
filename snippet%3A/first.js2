@@ -1,4 +1,0 @@
-let myName = "anca"; 
-var myName = 'ba nu'; 
-
-console.log(myName);

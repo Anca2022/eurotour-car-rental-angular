@@ -1,5 +1,0 @@
-let i = 10;
-let j;
-j += i; 
-console.log("i: " + i );
-console.log("j: " + j );
