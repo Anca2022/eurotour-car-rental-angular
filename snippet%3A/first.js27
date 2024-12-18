@@ -1,5 +1,0 @@
-function haha () {console.log(this);}
-haha(); 
-
-let arrow2 = () => {console.log( this )};
-arrow2();

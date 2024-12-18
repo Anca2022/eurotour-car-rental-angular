@@ -1,2 +1,0 @@
-function haha () {console.log(this);}
-haha(); 
